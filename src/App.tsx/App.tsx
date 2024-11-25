@@ -1,8 +1,10 @@
 import MainPage from '../pages/MainPage/MainPage';
 
+const placesToStay = 312;
+
 function App() {
   return (
-    <MainPage/>
+    <MainPage placesToStay={placesToStay}/>
   );
 }
 
