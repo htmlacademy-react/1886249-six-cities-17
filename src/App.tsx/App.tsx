@@ -1,6 +1,6 @@
 import MainPage from '../pages/mai-page/MainPage';
+import { placesToStay } from '../pages/mock-data';
 
-const placesToStay = 312;
 
 function App() {
   return (

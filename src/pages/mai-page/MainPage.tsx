@@ -1,4 +1,5 @@
 import OfferCard from '../../components/offer-car/OfferCard';
+import { amsterdamOffers } from '../mock-data';
 
 type MainPageProps = {
   placesToStay: number;
@@ -94,10 +95,7 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferCard/>
-                <OfferCard/>
-                <OfferCard/>
-                <OfferCard/>
+                {amsterdamOffers.map((offer) => <OfferCard previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
               </div>
             </section>
             <div className="cities__right-section">
