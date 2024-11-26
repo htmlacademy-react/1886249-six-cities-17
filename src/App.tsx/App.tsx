@@ -1,4 +1,4 @@
-import MainPage from '../pages/mai-page/MainPage';
+import MainPage from '../pages/main-page/MainPage';
 import { placesToStay } from '../pages/mock-data';
 
 

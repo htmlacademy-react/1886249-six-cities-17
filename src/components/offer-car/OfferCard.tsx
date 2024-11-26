@@ -1,26 +1,27 @@
 type OfferCardProps = {
-  previewImage: string;
-  isPremium: boolean;
-  price: number;
-  title: string;
+    previewImage: string;
+    isPremium: boolean;
+    price: number;
+    title: string;
 }
 
-export default function OfferCard ({previewImage, isPremium, price, title}: OfferCardProps) {
+export default function OfferCard (props: OfferCardProps) {
   return (
     <article className="cities__card place-card">
-      <div className="place-card__mark">
-        {isPremium ? <span>Premium</span> : null}
-        <span>Premium</span>
-      </div>
+      {props.isPremium ?
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+        : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+          <img className="place-card__image" src={props.previewImage} width={260} height={200} alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">€{price}</b>
+            <b className="place-card__price-value">€{props.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -37,7 +38,7 @@ export default function OfferCard ({previewImage, isPremium, price, title}: Offe
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#">{props.title}</a>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
