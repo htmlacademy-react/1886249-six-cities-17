@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
 import OfferCard from '../../components/offer-card-main/OfferCard';
-import { amsterdamOffers } from '../mock-data';
+import { amsterdamOffers } from '../../libs/mock-data';
+import { Cities } from '../../libs/const';
 
 type MainPageProps = {
   placesToStay: number;
@@ -14,36 +16,9 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
       <div className="tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <NavLink to='/' className='locations__item-link tabs__item tabs__item--active'>
-                <span>Paris</span>
-              </NavLink>
-            </li>
-            <li className="locations__item">
-              <NavLink to='/' className="locations__item-link tabs__item">
-                <span>Cologne</span>
-              </NavLink>
-            </li>
-            <li className="locations__item">
-              <NavLink to='/' className="locations__item-link tabs__item">
-                <span>Brussels</span>
-              </NavLink>
-            </li>
-            <li className="locations__item">
-              <NavLink to='/' className="locations__item-link tabs__item">
-                <span>Amsterdam</span>
-              </NavLink>
-            </li>
-            <li className="locations__item">
-              <NavLink to='/' className="locations__item-link tabs__item">
-                <span>Hamburg</span>
-              </NavLink>
-            </li>
-            <li className="locations__item">
-              <NavLink to='/' className="locations__item-link tabs__item">
-                <span>Dusseldorf</span>
-              </NavLink>
-            </li>
+            {Object.values(Cities).map((city: Cities) => (<li key={city} className="locations__item">
+              <NavLink to='/' className='locations__item-link tabs__item tabs__item--active'><span>{city}</span></NavLink>
+            </li>))}
           </ul>
         </section>
       </div>
