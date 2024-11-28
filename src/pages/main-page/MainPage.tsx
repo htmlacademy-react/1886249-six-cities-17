@@ -17,7 +17,7 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
         <section className="locations container">
           <ul className="locations__list tabs__list">
             {Object.values(Cities).map((city: Cities) => (<li key={city} className="locations__item">
-              <NavLink to='/' className='locations__item-link tabs__item tabs__item--active'><span>{city}</span></NavLink>
+              <NavLink to="/" className={({ isActive }) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}><span>{city}</span></NavLink>
             </li>))}
           </ul>
         </section>

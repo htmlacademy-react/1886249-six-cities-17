@@ -6,18 +6,23 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/NotFoundPage';
 import OfferPage from '../pages/offer-page/OfferPage';
 import Layout from '../layout/Layout';
+import { AppRoutes, AuthorisationStatus } from '../libs/const';
+import PrivateRoute from '../components/private-route/PrivateRoute';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} >
-          <Route path='/' index element={<MainPage placesToStay={placesToStay} />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
-          <Route path="/offer/:id" element={<OfferPage />} />
+        <Route path={AppRoutes.Root} element={<Layout />} >
+          <Route path={AppRoutes.Root} element={<MainPage placesToStay={placesToStay} />} />
+          <Route path={AppRoutes.Favourites} element={
+            <PrivateRoute authorisationStatus={AuthorisationStatus.NoAuth}><FavouritesPage /></PrivateRoute>
+          }
+          />
+          <Route path={AppRoutes.Offer} element={<OfferPage />} />
         </Route>
-        <Route path="/log-in" element={<LoginPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={AppRoutes.Login} element={<LoginPage />} />
+        <Route path={AppRoutes.Error} element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

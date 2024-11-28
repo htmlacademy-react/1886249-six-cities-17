@@ -6,3 +6,18 @@ export enum Cities {
   HAMBURG = 'Hamburg',
   DUSSELDORF = 'Dusseldorf',
 }
+
+
+export enum AuthorisationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
+
+export enum AppRoutes {
+  Root = '/',
+  Favourites = '/favourites',
+  Offer = '/offer/:id',
+  Login = '/log-in',
+  Error = '*'
+}
