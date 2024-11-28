@@ -1,9 +1,11 @@
+import { NavLink } from 'react-router-dom';
 import OfferCard from '../../components/offer-card-main/OfferCard';
 import { amsterdamOffers } from '../mock-data';
 
 type MainPageProps = {
   placesToStay: number;
 }
+
 
 export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
   return (
@@ -13,34 +15,34 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
         <section className="locations container">
           <ul className="locations__list tabs__list">
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <NavLink to='/' className='locations__item-link tabs__item tabs__item--active'>
                 <span>Paris</span>
-              </a>
+              </NavLink>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <NavLink to='/' className="locations__item-link tabs__item">
                 <span>Cologne</span>
-              </a>
+              </NavLink>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <NavLink to='/' className="locations__item-link tabs__item">
                 <span>Brussels</span>
-              </a>
+              </NavLink>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
+              <NavLink to='/' className="locations__item-link tabs__item">
                 <span>Amsterdam</span>
-              </a>
+              </NavLink>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <NavLink to='/' className="locations__item-link tabs__item">
                 <span>Hamburg</span>
-              </a>
+              </NavLink>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <NavLink to='/' className="locations__item-link tabs__item">
                 <span>Dusseldorf</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </section>
