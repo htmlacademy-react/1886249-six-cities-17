@@ -1,9 +1,17 @@
-import Header from '../../components/header/Header';
+import Logo from '../../components/logo/Logo';
 
 function LoginPage() {
   return (
     <div className="page page--gray page--login">
-      <Header/>
+      <header className="header">
+        <div className="container">
+          <div className="header__wrapper">
+            <div className="header__left">
+              <Logo/>
+            </div>
+          </div>
+        </div>
+      </header>
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
