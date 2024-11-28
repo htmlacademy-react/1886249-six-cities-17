@@ -1,5 +1,5 @@
 import Header from '../../components/header/Header';
-import OfferCard from '../../components/offer-car/OfferCard';
+import OfferCard from '../../components/offer-card-main/OfferCard';
 import { amsterdamOffers } from '../mock-data';
 
 type MainPageProps = {
@@ -69,7 +69,7 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {amsterdamOffers.map((offer) => <OfferCard previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
+                {amsterdamOffers.map((offer) => <OfferCard id={offer.id} previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
               </div>
             </section>
             <div className="cities__right-section">

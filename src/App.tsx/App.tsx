@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/" index element={<MainPage placesToStay={placesToStay} />} />
         <Route path="/favourites" element={<FavouritesPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/offer" element={<OfferPage />} />
+        <Route path="/log-in" element={<LoginPage />} />
+        <Route path="/offer/:id" element={<OfferPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

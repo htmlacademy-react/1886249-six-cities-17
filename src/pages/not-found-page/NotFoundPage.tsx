@@ -6,7 +6,7 @@ function NotFoundPage() {
     <div className='not-found-box'>
       <h1 className='not-found-title'>Error 404</h1>
       <p>Sorry, this page does not exist...</p>
-      <Link to='/' className='not-found-link'>Go to back to the website</Link>
+      <Link to='/' className='not-found-link'>Go back to the website</Link>
     </div>
   );
 }

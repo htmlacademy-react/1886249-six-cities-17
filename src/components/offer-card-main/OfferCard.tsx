@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
+
 type OfferCardProps = {
-    previewImage: string;
-    isPremium: boolean;
-    price: number;
-    title: string;
+  id: string;
+  previewImage: string;
+  isPremium: boolean;
+  price: number;
+  title: string;
 }
 
 export default function OfferCard (props: OfferCardProps) {
@@ -14,9 +17,9 @@ export default function OfferCard (props: OfferCardProps) {
         </div>
         : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`offer/:${props.id}`}>
           <img className="place-card__image" src={props.previewImage} width={260} height={200} alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
