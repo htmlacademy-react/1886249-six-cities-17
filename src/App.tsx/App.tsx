@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoutes.Main} element={<Layout />} >
-          <Route path={AppRoutes.Main} element={<MainPage placesToStay={placesToStay} />} />
+          <Route index element={<MainPage placesToStay={placesToStay} />} />
           <Route path={AppRoutes.Favourites} element={
             <PrivateRoute authorisationStatus={AuthorisationStatus.NoAuth}><FavouritesPage /></PrivateRoute>
           }

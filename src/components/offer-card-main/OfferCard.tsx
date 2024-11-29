@@ -41,7 +41,7 @@ export default function OfferCard (props: OfferCardProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{props.title}</a>
+          <Link to={`offer/:${props.id}`}>{props.title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
