@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../logo/Logo';
+import Logo from '../logo/logo';
 import { AppRoutes } from '../../libs/const';
 
 function Header() {

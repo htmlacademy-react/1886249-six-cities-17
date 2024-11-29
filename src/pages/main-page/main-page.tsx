@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
-import OfferCard from '../../components/offer-card-main/OfferCard';
+import OfferCard from '../../components/offer-card-main/offer-card';
 import { amsterdamOffers } from '../../libs/mock-data';
 import { Cities } from '../../libs/const';
 
