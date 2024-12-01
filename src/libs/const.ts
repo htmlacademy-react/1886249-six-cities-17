@@ -21,3 +21,5 @@ export enum AppRoutes {
   Login = '/log-in',
   Error = '*'
 }
+
+export const placesToStay = 312;

@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
 import OfferCard from '../../components/offer-card-main/offer-card';
-import { amsterdamOffers } from '../../libs/mock-data';
 import { Cities } from '../../libs/const';
+import { Offer } from '../../libs/types';
 
 type MainPageProps = {
   placesToStay: number;
+  offers: Offer[];
 }
 
 
-export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
+export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -43,7 +44,7 @@ export default function MainPage ({placesToStay}: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {amsterdamOffers.map((offer) => <OfferCard id={offer.id} previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
+              {offers.map((offer) => <OfferCard id={offer.id} previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
             </div>
           </section>
           <div className="cities__right-section">
