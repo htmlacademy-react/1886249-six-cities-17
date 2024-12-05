@@ -1,4 +1,3 @@
-
 export const offers = [
   {
     'id': 'eceb388d-1251-416a-a72d-9df79f4558f0',
