@@ -9,7 +9,6 @@ type MainPageProps = {
   offers: Offer[];
 }
 
-
 export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
