@@ -21,7 +21,7 @@ function App({offers}:AppOffers) {
         <Route path={AppRoutes.Main} element={<Layout />} >
           <Route index element={<MainPage offers={offers} placesToStay={placesToStay} />} />
           <Route path={AppRoutes.Favourites} element={
-            <PrivateRoute authorisationStatus={AuthorisationStatus.NoAuth}><FavouritesPage /></PrivateRoute>
+            <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
           }
           />
           <Route path={AppRoutes.Offer} element={<OfferPage />} />

@@ -1,3 +1,6 @@
+import Footer from '../../components/footer/footer';
+import OfferCard from '../../components/offer-card-main/offer-card';
+import { favourites } from '../../libs/mocks/favourites';
 
 
 export default function FavouritesPage() {
@@ -17,7 +20,8 @@ export default function FavouritesPage() {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <article className="favorites__card place-card">
+                  {favourites.map((favOffer) => <OfferCard id={favOffer.id} previewImage={favOffer.previewImage} isPremium={favOffer.isPremium} price={favOffer.price} title={favOffer.title} key={favOffer.id} isFavourite/>)}
+                  {/* <article className="favorites__card place-card">
                     <div className="place-card__mark">
                       <span>Premium</span>
                     </div>
@@ -81,10 +85,10 @@ export default function FavouritesPage() {
                       </h2>
                       <p className="place-card__type">Room</p>
                     </div>
-                  </article>
+                  </article> */}
                 </div>
               </li>
-              <li className="favorites__locations-items">
+              {/* <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
                     <a className="locations__item-link" href="#">
@@ -125,16 +129,12 @@ export default function FavouritesPage() {
                     </div>
                   </article>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </section>
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width={64} height={33} />
-        </a>
-      </footer>
+      <Footer/>
     </>
   );
 }
