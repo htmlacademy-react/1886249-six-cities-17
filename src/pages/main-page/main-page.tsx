@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Cities } from '../../libs/const';
 import { Offer } from '../../libs/types';
 import OfferList from '../../components/offer-list/offer-list';
+import { useState } from 'react';
 
 type MainPageProps = {
   placesToStay: number;
@@ -10,6 +11,13 @@ type MainPageProps = {
 }
 
 export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.Element {
+  const [isActiveOffer, setIsActiveOffer] = useState<string | null>(null);
+
+  const handleActiveOfferChange = (id: string | null) => {
+    setIsActiveOffer(id);
+  };
+
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -42,7 +50,7 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <OfferList offers={offers}/>
+            <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers}/>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" />

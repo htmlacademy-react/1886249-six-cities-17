@@ -20,7 +20,7 @@ export default function FavouritesPage() {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {favourites.map((favOffer) => <OfferCard id={favOffer.id} previewImage={favOffer.previewImage} isPremium={favOffer.isPremium} price={favOffer.price} title={favOffer.title} key={favOffer.id} isFavourite/>)}
+                  {favourites.map((favOffer) => <OfferCard offer={favOffer} key={favOffer.id}/>)}
                   {/* <article className="favorites__card place-card">
                     <div className="place-card__mark">
                       <span>Premium</span>
