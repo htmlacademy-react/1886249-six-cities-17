@@ -7,7 +7,6 @@ export enum Cities {
   DUSSELDORF = 'Dusseldorf',
 }
 
-
 export enum AuthorisationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -23,3 +22,12 @@ export enum AppRoutes {
 }
 
 export const placesToStay = 312;
+
+export enum ImgSettings {
+  OfferCardWidth = 260,
+  OfferCardHeight = 200,
+  FavouriteCardWidth = 150,
+  FavouriteCardHeight = 100,
+}
+
+

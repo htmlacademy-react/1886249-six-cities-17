@@ -1,6 +1,6 @@
-
 import NearPlaces from '../../components/offer/near-places/near-places';
-import Offer from '../../components/offer/offer/Offer';
+import Offer from '../../components/offer/offer/offer';
+
 
 function OfferPage() {
   return (
