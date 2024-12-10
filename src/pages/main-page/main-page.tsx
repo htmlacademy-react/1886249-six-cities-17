@@ -1,16 +1,23 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
-import OfferCard from '../../components/offer-card-main/offer-card';
 import { Cities } from '../../libs/const';
 import { Offer } from '../../libs/types';
+import OfferList from '../../components/offer-list/offer-list';
+import { useState } from 'react';
 
 type MainPageProps = {
   placesToStay: number;
   offers: Offer[];
 }
 
-
 export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.Element {
+  const [isActiveOffer, setIsActiveOffer] = useState<string | null>(null);
+
+  const handleActiveOfferChange = (id: string | null) => {
+    setIsActiveOffer(id);
+  };
+
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -43,9 +50,7 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {offers.map((offer) => <OfferCard id={offer.id} previewImage={offer.previewImage} isPremium={offer.isPremium} price={offer.price} title={offer.title} key={offer.id}/>)}
-            </div>
+            <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers}/>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" />
