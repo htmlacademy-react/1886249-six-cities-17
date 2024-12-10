@@ -14,7 +14,6 @@ export default function OfferCard ({offer, onHandleActiveOfferChange}: OfferCard
 
   return (
     <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} className={clsx('place-card', typeCard && `${typeCard}__card`)} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}>
-      {/* className = clsx{('place-card', typeCard && ${typeCard}__card)} */}
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
