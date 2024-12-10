@@ -1,4 +1,4 @@
-
+import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
 import { ImgSettings } from '../../libs/const';
 import { Offer } from 'src/libs/types';
@@ -10,9 +10,11 @@ type OfferCardProps = {
 
 export default function OfferCard ({offer, onHandleActiveOfferChange}: OfferCardProps) {
   const {id, previewImage, isPremium, price, title, isFavorite} = offer;
+  const typeCard = isFavorite ? 'favorites' : 'cities';
 
   return (
-    <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} className={ `${isFavorite ? 'favorites__card' : 'cities__card' } place-card`} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}>
+    <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} className={clsx('place-card', typeCard && `${typeCard}__card`)} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}>
+      {/* className = clsx{('place-card', typeCard && ${typeCard}__card)} */}
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
