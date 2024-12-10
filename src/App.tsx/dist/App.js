@@ -8,10 +8,11 @@ var not_found_page_1 = require("../pages/not-found-page/not-found-page");
 var offer_page_1 = require("../pages/offer-page/offer-page");
 var const_1 = require("../libs/const");
 var private_route_1 = require("../components/private-route/private-route");
+var Layout_1 = require("src/layout/Layout");
 function App(_a) {
     var offers = _a.offers;
     return (React.createElement(react_router_dom_1.Routes, null,
-        React.createElement(react_router_dom_1.Route, { path: const_1.AppRoutes.Main, element: React.createElement(Layout, null) },
+        React.createElement(react_router_dom_1.Route, { path: const_1.AppRoutes.Main, element: React.createElement(Layout_1["default"], null) },
             React.createElement(react_router_dom_1.Route, { index: true, element: React.createElement(main_page_1["default"], { offers: offers, placesToStay: const_1.placesToStay }) }),
             React.createElement(react_router_dom_1.Route, { path: const_1.AppRoutes.Favourites, element: React.createElement(private_route_1["default"], { authorisationStatus: const_1.AuthorisationStatus.Auth },
                     React.createElement(favorites_page_1["default"], null)) }),

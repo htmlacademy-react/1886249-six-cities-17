@@ -13,14 +13,14 @@ export default function OfferCard ({offer, onHandleActiveOfferChange}: OfferCard
   const typeCard = isFavorite ? 'favorites' : 'cities';
 
   return (
-    <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} className={clsx('place-card', typeCard && `${typeCard}__card`)} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}>
+    <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)} className={clsx('place-card', typeCard && `${typeCard}__card`)}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
         : null}
       <div
-        className={ `${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper' } place-card__image-wrapper`}
+        className={clsx(`${typeCard}__image-wrapper`, 'place-card__image-wrapper')}
       >
         <Link to={`offer/:${id}`}>
           <img className="place-card__image" src={previewImage}
@@ -28,13 +28,13 @@ export default function OfferCard ({offer, onHandleActiveOfferChange}: OfferCard
           />
         </Link>
       </div>
-      <div className={ `${isFavorite ? 'favorites__card-info' : '' } place-card__info`}>
+      <div className={`${isFavorite ? 'favorites__card-info' : '' } place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className={` place-card__bookmark-button${isFavorite ? 'place-card__bookmark-button--active' : ''} button`}type="button">
+          <button className={`place-card__bookmark-button ${isFavorite ? 'place-card__bookmark-button--active' : ''} button`}type="button">
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
