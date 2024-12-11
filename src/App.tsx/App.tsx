@@ -7,7 +7,7 @@ import OfferPage from '../pages/offer-page/offer-page';
 import { AppRoutes, AuthorisationStatus, placesToStay } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import { Offer } from '../libs/types';
-import Layout from 'src/layout/Layout';
+import Layout from '../layout/Layout';
 
 type AppOffersProps = {
   offers: Offer[];

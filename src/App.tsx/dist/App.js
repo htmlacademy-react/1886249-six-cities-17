@@ -8,7 +8,7 @@ var not_found_page_1 = require("../pages/not-found-page/not-found-page");
 var offer_page_1 = require("../pages/offer-page/offer-page");
 var const_1 = require("../libs/const");
 var private_route_1 = require("../components/private-route/private-route");
-var Layout_1 = require("src/layout/Layout");
+var Layout_1 = require("../layout/Layout");
 function App(_a) {
     var offers = _a.offers;
     return (React.createElement(react_router_dom_1.Routes, null,

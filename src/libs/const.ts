@@ -24,10 +24,16 @@ export enum AppRoutes {
 export const placesToStay = 312;
 
 export enum ImgSettings {
-  OfferCardWidth = 260,
+  OfferCardWidth= 260,
   OfferCardHeight = 200,
   FavouriteCardWidth = 150,
   FavouriteCardHeight = 100,
+}
+
+export enum CardType {
+  FavoritesCard = 'favorites',
+  CitiesCard = 'cities',
+  NearCard = 'near-places'
 }
 
 

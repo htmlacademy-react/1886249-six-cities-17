@@ -49,3 +49,4 @@ export type OfferFull = {
     bedrooms: number;
     maxAdults: number;
   };
+

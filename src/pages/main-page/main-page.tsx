@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
-import { Cities } from '../../libs/const';
+import { CardType, Cities } from '../../libs/const';
 import { Offer } from '../../libs/types';
 import OfferList from '../../components/offer-list/offer-list';
 import { useState } from 'react';
@@ -50,7 +50,7 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers}/>
+            <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers} offerCardType={CardType.CitiesCard}/>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" />
