@@ -2,6 +2,8 @@ import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
 import { CardType, ImgSettings } from '../../libs/const';
 import { Offer } from 'src/libs/types';
+import Rating from '../offer/rating/rating';
+import AddToBookmarks from '../offer/add-to-bookmarks-btn/add-to-bookmarks-btn';
 
 type OfferCardProps = {
   offer: Offer;
@@ -34,19 +36,9 @@ export default function OfferCard ({offer, onHandleActiveOfferChange, offerCardT
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button ${CardType.FavoritesCard && 'place-card__bookmark-button--active'} button`} type="button">
-            <svg className="place-card__bookmark-icon" width={18} height={19}>
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <AddToBookmarks offerCardType={offerCardType}/>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={CardType.FavoritesCard && { width: '100%' } || CardType.CitiesCard && { width: '80%' } || CardType.NearCard}/>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <Rating offerCardType={offerCardType}/>
         <h2 className="place-card__name">
           <Link to={`offer/:${id}`}>{title}</Link>
         </h2>
