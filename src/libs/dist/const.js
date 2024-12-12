@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.CardType = exports.ImgSettings = exports.placesToStay = exports.AppRoutes = exports.AuthorisationStatus = exports.Cities = void 0;
+exports.MapType = exports.CardType = exports.ImgSettings = exports.placesToStay = exports.AppRoutes = exports.AuthorisationStatus = exports.Cities = void 0;
 var Cities;
 (function (Cities) {
     Cities["PARIS"] = "Paris";
@@ -38,3 +38,8 @@ var CardType;
     CardType["CitiesCard"] = "cities";
     CardType["NearCard"] = "near-places";
 })(CardType = exports.CardType || (exports.CardType = {}));
+var MapType;
+(function (MapType) {
+    MapType["MainMap"] = "cities";
+    MapType["OfferMap"] = "offer";
+})(MapType = exports.MapType || (exports.MapType = {}));

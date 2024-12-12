@@ -1,8 +1,13 @@
-function Map() {
+import clsx from 'clsx';
+import { MapType } from '../../libs/const';
+
+type MapProps = {
+  mapType: MapType;
+}
+
+function Map({mapType}: MapProps) {
   return (
-    <div className="cities__right-section">
-      <section className="cities__map map" />
-    </div>
+    <section className={clsx(`${mapType}__map map`)}/>
   );
 }
 

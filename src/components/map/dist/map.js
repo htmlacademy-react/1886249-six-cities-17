@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
-function Map() {
-    return (React.createElement("div", { className: "cities__right-section" },
-        React.createElement("section", { className: "cities__map map" })));
+var clsx_1 = require("clsx");
+function Map(_a) {
+    var mapType = _a.mapType;
+    return (React.createElement("section", { className: clsx_1["default"](mapType + "__map map") }));
 }
 exports["default"] = Map;

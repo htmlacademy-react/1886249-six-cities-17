@@ -1,11 +1,9 @@
-/* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
-import { CardType, Cities } from '../../libs/const';
-import { OfferCardPrew } from '../../libs/types';
-import OfferList from '../../components/offer-list/offer-list';
 import { useState } from 'react';
-import Map from '../../components/map/map';
-
+import Map from '@/components/map/map';
+import OfferList from '@/components/offer-list/offer-list';
+import { OfferCardPrew } from '@/libs/types';
+import { CardType, Cities, MapType } from '@/libs/const';
 type MainPageProps = {
   placesToStay: number;
   offers: OfferCardPrew[];
@@ -25,9 +23,10 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
       <div className="tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            {Object.values(Cities).map((city: Cities) => (<li key={city} className="locations__item">
-              <NavLink to="/" className={({ isActive }) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}><span>{city}</span></NavLink>
-            </li>))}
+            {Object.values(Cities).map((city: Cities) => (
+              <li key={city} className="locations__item">
+                <NavLink to="/" className={({ isActive }) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}><span>{city}</span></NavLink>
+              </li>))}
           </ul>
         </section>
       </div>
@@ -53,7 +52,9 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
             </form>
             <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers} offerCardType={CardType.CitiesCard}/>
           </section>
-          <Map/>
+          <div className="cities__right-section">
+            <Map mapType={MapType.MainMap}/>
+          </div>
         </div>
       </div>
     </main>

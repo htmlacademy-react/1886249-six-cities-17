@@ -36,4 +36,9 @@ export enum CardType {
   NearCard = 'near-places'
 }
 
+export enum MapType {
+  MainMap = 'cities',
+  OfferMap = 'offer'
+}
+
 

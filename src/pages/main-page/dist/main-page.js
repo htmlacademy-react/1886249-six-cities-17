@@ -1,11 +1,10 @@
 "use strict";
 exports.__esModule = true;
-/* eslint-disable react/jsx-closing-tag-location */
 var react_router_dom_1 = require("react-router-dom");
-var const_1 = require("../../libs/const");
-var offer_list_1 = require("../../components/offer-list/offer-list");
 var react_1 = require("react");
-var map_1 = require("../../components/map/map");
+var map_1 = require("@/components/map/map");
+var offer_list_1 = require("@/components/offer-list/offer-list");
+var const_1 = require("@/libs/const");
 function MainPage(_a) {
     var placesToStay = _a.placesToStay, offers = _a.offers;
     var _b = react_1.useState(null), isActiveOffer = _b[0], setIsActiveOffer = _b[1];
@@ -41,6 +40,7 @@ function MainPage(_a) {
                             React.createElement("li", { className: "places__option", tabIndex: 0 }, "Price: high to low"),
                             React.createElement("li", { className: "places__option", tabIndex: 0 }, "Top rated first"))),
                     React.createElement(offer_list_1["default"], { onHandleActiveOfferChange: handleActiveOfferChange, offers: offers, offerCardType: const_1.CardType.CitiesCard })),
-                React.createElement(map_1["default"], null)))));
+                React.createElement("div", { className: "cities__right-section" },
+                    React.createElement(map_1["default"], { mapType: const_1.MapType.MainMap }))))));
 }
 exports["default"] = MainPage;
