@@ -1,52 +1,43 @@
-export type Offer = {
+export type OfferBase = {
   id: string;
   title: string;
   type: string;
   price: number;
-  previewImage: string;
-  city: {
-    name: string;
-    location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
-  };
+  city: OfferCity;
+  location: OfferLocation;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
 }
 
-export type OfferFull = {
-    id: string;
-    title: string;
+export type OfferCardPrew = OfferBase & {
+    previewImage: string;
+}
+
+export type OfferFull = OfferBase & {
     description: string;
-    type: string;
-    price: number;
     images: string[];
-    city: {
-      name: string;
-      location: {
-        latitude: number;
-        longitude: number;
-        zoom: number;
-      };
-    };
-    location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
     goods: string[];
     host: {
       isPro: boolean;
       name: string;
       avatarUrl: string;
     };
-    isPremium: boolean;
-    isFavorite: boolean;
-    rating: number;
     bedrooms: number;
     maxAdults: number;
   };
 
+export type OfferCity = {
+    city: {
+    name: string;
+    location: OfferLocation;
+  };
+}
+
+export type OfferLocation = {
+  location: {
+      latitude: number;
+      longitude: number;
+      zoom: number;
+    };
+}

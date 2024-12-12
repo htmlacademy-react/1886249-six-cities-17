@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { NavLink } from 'react-router-dom';
 import { CardType, Cities } from '../../libs/const';
-import { Offer } from '../../libs/types';
+import { OfferCardPrew } from '../../libs/types';
 import OfferList from '../../components/offer-list/offer-list';
 import { useState } from 'react';
+import Map from '../../components/map/map';
 
 type MainPageProps = {
   placesToStay: number;
-  offers: Offer[];
+  offers: OfferCardPrew[];
 }
 
 export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.Element {
@@ -52,9 +53,7 @@ export default function MainPage ({placesToStay, offers}: MainPageProps): JSX.El
             </form>
             <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers} offerCardType={CardType.CitiesCard}/>
           </section>
-          <div className="cities__right-section">
-            <section className="cities__map map" />
-          </div>
+          <Map/>
         </div>
       </div>
     </main>

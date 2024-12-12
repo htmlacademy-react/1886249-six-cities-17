@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var const_1 = require("src/libs/const");
+var const_1 = require("../../../libs/const");
 function Rating(_a) {
     var offerCardType = _a.offerCardType;
     return (React.createElement("div", { className: "place-card__rating rating" },

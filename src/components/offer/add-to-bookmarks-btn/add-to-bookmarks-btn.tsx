@@ -1,4 +1,4 @@
-import { CardType } from 'src/libs/const';
+import { CardType } from '../../../libs/const';
 
 type AddToBookmarksProps = {
   offerCardType: CardType;

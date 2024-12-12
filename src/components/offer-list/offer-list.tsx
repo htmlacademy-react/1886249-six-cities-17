@@ -1,10 +1,10 @@
 import { CardType } from '../../libs/const';
-import { Offer } from '../../libs/types';
+import { OfferFull, OfferCardPrew } from '../../libs/types';
 import OfferCard from '../offer-card-main/offer-card';
 import clsx from 'clsx';
 
 type OfferListProps = {
-  offers: Offer[];
+  offers: OfferFull[] | OfferCardPrew[];
   onHandleActiveOfferChange?: (id: string | null) => void;
   offerCardType: CardType;
 }
