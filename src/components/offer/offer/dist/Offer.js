@@ -6,7 +6,7 @@ var offer_gallery_1 = require("../offer-gallery/offer-gallery");
 // import { OfferFull } from '../../../libs/types';
 var offer_description_1 = require("../offer-description/offer-description");
 var const_1 = require("../../../libs/const");
-var _components_1 = require("@components");
+var map_1 = require("@/components/map/map");
 function Offer() {
     var idParams = react_router_dom_1.useParams();
     var currentOffer = offers_full_1.offersFull.find(function (offer) {
@@ -18,6 +18,6 @@ function Offer() {
     return (React.createElement("section", { className: "offer" },
         React.createElement(offer_gallery_1["default"], { images: currentOffer === null || currentOffer === void 0 ? void 0 : currentOffer.images }),
         React.createElement(offer_description_1["default"], { currentOffer: currentOffer }),
-        React.createElement(_components_1["default"], { mapType: const_1.MapType.OfferMap })));
+        React.createElement(map_1["default"], { mapType: const_1.MapType.OfferMap })));
 }
 exports["default"] = Offer;

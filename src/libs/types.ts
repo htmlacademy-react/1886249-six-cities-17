@@ -28,16 +28,12 @@ export type OfferFull = OfferBase & {
   };
 
 export type OfferCity = {
-    city: {
     name: string;
     location: OfferLocation;
-  };
 }
 
 export type OfferLocation = {
-  location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
+    latitude: number;
+    longitude: number;
+    zoom: number;
 }

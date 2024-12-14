@@ -1,6 +1,8 @@
-import OfferList from '../../offer-list/offer-list';
-import { CardType } from '../../../libs/const';
-import { nearPlaces } from '../../../libs/mocks/near-places';
+
+import OfferList from '@/components/offer-list/offer-list';
+import { CardType } from '@/libs/const';
+import { nearPlaces } from '@/libs/mocks/near-places';
+
 
 function NearPlaces() {
   return (

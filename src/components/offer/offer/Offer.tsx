@@ -1,10 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { offersFull } from '../../../libs/mocks/offers-full';
 import OfferGalary from '../offer-gallery/offer-gallery';
-// import { OfferFull } from '../../../libs/types';
 import OfferDescription from '../offer-description/offer-description';
 import { MapType } from '../../../libs/const';
-import Map from '@components';
+import MapComponent from '@/components/map-component/map-component';
 
 function Offer() {
   const idParams = useParams();
@@ -19,7 +18,7 @@ function Offer() {
     <section className="offer">
       <OfferGalary images={currentOffer?.images}/>
       <OfferDescription currentOffer={currentOffer}/>
-      <Map mapType={MapType.OfferMap}/>
+      <MapComponent mapType={MapType.OfferMap}/>
     </section>
   );
 }

@@ -5,10 +5,10 @@ type MapProps = {
   mapType: MapType;
 }
 
-function Map({mapType}: MapProps) {
+function MapComponent({mapType}: MapProps) {
   return (
     <section className={clsx(`${mapType}__map map`)}/>
   );
 }
 
-export default Map;
+export default MapComponent;

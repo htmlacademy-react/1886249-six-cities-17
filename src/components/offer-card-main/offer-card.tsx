@@ -1,12 +1,13 @@
 import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
 import { CardType, ImgSettings } from '../../libs/const';
-import { Offer } from 'src/libs/types';
 import Rating from '../offer/rating/rating';
 import AddToBookmarks from '../offer/add-to-bookmarks-btn/add-to-bookmarks-btn';
+import { OfferCardPrew } from '@/libs/types';
+
 
 type OfferCardProps = {
-  offer: Offer;
+  offer: OfferCardPrew;
   onHandleActiveOfferChange?: (id: string | null) => void;
   offerCardType: CardType;
 }
