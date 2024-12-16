@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 import { CardType, ImgSettings } from '../../libs/const';
 import Rating from '../offer/rating/rating';
 import AddToBookmarks from '../offer/add-to-bookmarks-btn/add-to-bookmarks-btn';
-import { OfferCardPrew } from '@/libs/types';
+import { OfferCardPrew } from '@/libs/types/types';
 
 
 type OfferCardProps = {
   offer: OfferCardPrew;
-  onHandleActiveOfferChange?: (id: string | null) => void;
+  handleListItemHover: (listItemName: string | null) => void;
   offerCardType: CardType;
 }
 
-export default function OfferCard ({offer, onHandleActiveOfferChange, offerCardType}: OfferCardProps) {
+export default function OfferCard ({offer, handleListItemHover, offerCardType}: OfferCardProps) {
+
   const {id, previewImage, isPremium, price, title} = offer;
 
   return (
-    <article onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)} onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)} className={clsx('place-card', `${offerCardType}__card`)}>
+    <article onMouseEnter={() => handleListItemHover && handleListItemHover(offer.title)} onMouseLeave={() => handleListItemHover && handleListItemHover(null)} className={clsx('place-card', `${offerCardType}__card`)}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

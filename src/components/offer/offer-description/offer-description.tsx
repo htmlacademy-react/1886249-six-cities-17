@@ -1,4 +1,4 @@
-import { OfferFull } from '../../../libs/types';
+import { OfferFull } from '../../../libs/types/types';
 import HostInfo from '../host-info/host-info';
 import OfferReviews from '../offer-reviews/offer-reviews';
 

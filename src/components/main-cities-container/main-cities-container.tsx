@@ -4,18 +4,23 @@ import { useState } from 'react';
 import MapComponent from '../map-component/map-component';
 import { MainPageProps } from '@/pages/main-page/main-page';
 import SortingCities from '../sorting-cities/sorting-cities';
+import { OfferCardPrew, OfferCity,} from '@/libs/types/types';
 
 
 type MainCitiesContainerProps = MainPageProps & {
   activeCity: Cities;
+  city: OfferCity;
 }
 
-function MainCitiesContainer({placesToStay, offers, activeCity, selectedPoint}: MainCitiesContainerProps) {
+function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCitiesContainerProps) {
 
-  const [isActiveOffer, setIsActiveOffer] = useState<string | null>(null);
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(
+    undefined
+  );
 
-  const handleActiveOfferChange = (id: string | null) => {
-    setIsActiveOffer(id);
+  const handleListItemHover = (listItemName: string) => {
+    const currentPoint = offers.find((offer) => offer.title === listItemName);
+    setSelectedPoint(currentPoint);
   };
 
   return (
@@ -25,10 +30,10 @@ function MainCitiesContainer({placesToStay, offers, activeCity, selectedPoint}: 
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{placesToStay} places to stay in {activeCity}</b>
           <SortingCities/>
-          <OfferList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers} offerCardType={CardType.CitiesCard}/>
+          <OfferList offers={offers} onListItemHover={handleListItemHover} offerCardType={CardType.CitiesCard}/>
         </section>
         <div className="cities__right-section">
-          <MapComponent mapType={MapType.MainMap} offers={offers} selectedPoint={selectedPoint} activeCity={activeCity}/>
+          <MapComponent mapType={MapType.MainMap} city={city} offers={offers} selectedOffer={selectedPoint}/>
         </div>
       </div>
     </div>

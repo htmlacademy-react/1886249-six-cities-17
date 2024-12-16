@@ -37,3 +37,4 @@ export type OfferLocation = {
     longitude: number;
     zoom: number;
 }
+

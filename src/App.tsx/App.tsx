@@ -6,7 +6,7 @@ import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
 import { AppRoutes, AuthorisationStatus, placesToStay } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
-import { Offer } from '../libs/types';
+import { Offer } from '../libs/types/types';
 import Layout from '../layout/Layout';
 
 type AppOffersProps = {
