@@ -1,4 +1,3 @@
-// import { City } from '../types/map/map';
 import { OfferCity } from '../types/types';
 
 export const CITY: OfferCity = {
