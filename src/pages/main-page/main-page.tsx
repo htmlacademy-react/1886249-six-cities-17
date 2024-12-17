@@ -12,9 +12,9 @@ export default function MainPage (): JSX.Element {
 
   // const [cityForOffers, setCityForOffers] = useState(DEFAULT_CITY)
 
-  const particularOffers = offers.filter((offer) => offer.city.name === activeCity.toString());
+  const particularCityOffers = offers.filter((offer) => offer.city.name === activeCity.toString());
 
-  const placesToStay = particularOffers.length;
+  const placesToStay = particularCityOffers.length;
 
   const cityForOffers = CITIES_LOCATIONS.find((city) => {
     if (city.name === activeCity.toString()) {
@@ -28,7 +28,7 @@ export default function MainPage (): JSX.Element {
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <MainCitiesLocations activeCity={activeCity} setActiveCity={setActiveCity} />
-      <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularOffers} city={safeCityForOffers}/>
+      <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/>
     </main>
   );
 }
