@@ -1,4 +1,4 @@
-export const offers = [
+export const nearPlaces = [
   {
     'id': 'eceb388d-1251-416a-a72d-9df79f4558f0',
     'title': 'Amazing and Extremely Central Flat',
@@ -14,8 +14,8 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 52.3909553943508,
-      'longitude': 4.85309666406198,
+      'latitude': 52.385540000000006,
+      'longitude': 4.902976,
       'zoom': 16
     },
     'isFavorite': false,
@@ -37,8 +37,8 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 52.3609553943508,
-      'longitude': 4.85309666406198,
+      'latitude': 52.397540000000006,
+      'longitude': 4.9099759999999995,
       'zoom': 16
     },
     'isFavorite': false,
@@ -60,35 +60,11 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 52.3909553943508,
-      'longitude': 4.929309666406198,
+      'latitude': 52.37454,
+      'longitude': 4.881976,
       'zoom': 16
     },
     'isFavorite': false,
     'isPremium': true,
     'rating': 1.7
-  },
-  {
-    'id': '50f13fb8-fe49-49d6-a56f-204e157041c3',
-    'title': 'Wood and stone place',
-    'type': 'house',
-    'price': 565,
-    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/5.jpg',
-    'city': {
-      'name': 'Amsterdam',
-      'location': {
-        'latitude': 52.37454,
-        'longitude': 4.897976,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 52.3809553943508,
-      'longitude': 4.939309666406198,
-      'zoom': 16
-    },
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 2.3
-  },
-];
+  },];

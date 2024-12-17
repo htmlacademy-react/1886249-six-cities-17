@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx/App';
 import { offers } from './libs/mocks/offers';
+import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(
@@ -10,6 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offers={offers}/>
+    <BrowserRouter>
+      <App offers={offers}/>
+    </BrowserRouter>
   </React.StrictMode>
 );

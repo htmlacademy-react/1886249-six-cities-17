@@ -1,3 +1,5 @@
+
+import { CardType } from '../../libs/const';
 import Footer from '../../components/footer/footer';
 import OfferCard from '../../components/offer-card-main/offer-card';
 import { favourites } from '../../libs/mocks/favourites';
@@ -20,7 +22,7 @@ export default function FavouritesPage() {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {favourites.map((favOffer) => <OfferCard offer={favOffer} key={favOffer.id}/>)}
+                  {favourites.map((favOffer) => <OfferCard offer={favOffer} key={favOffer.id} offerCardType={CardType.FavoritesCard}/>)}
                   {/* <article className="favorites__card place-card">
                     <div className="place-card__mark">
                       <span>Premium</span>
