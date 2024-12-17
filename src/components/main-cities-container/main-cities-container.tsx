@@ -2,12 +2,13 @@ import { CardType, Cities, MapType } from '@/libs/const';
 import OfferList from '../offer-list/offer-list';
 import { useState } from 'react';
 import MapComponent from '../map-component/map-component';
-import { MainPageProps } from '@/pages/main-page/main-page';
 import SortingCities from '../sorting-cities/sorting-cities';
 import { OfferCardPrew, OfferCity,} from '@/libs/types/types';
 
 
-type MainCitiesContainerProps = MainPageProps & {
+type MainCitiesContainerProps = {
+  placesToStay: number;
+  offers: OfferCardPrew[];
   activeCity: Cities;
   city: OfferCity;
 }

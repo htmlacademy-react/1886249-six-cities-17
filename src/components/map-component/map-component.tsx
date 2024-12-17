@@ -10,7 +10,7 @@ import { OfferCardPrew, OfferCity } from '@/libs/types/types';
 type MapProps = {
   mapType: MapType;
   selectedOffer: OfferCardPrew | undefined;
-  city: OfferCity; //это правильный тип (имя и локация)
+  city: OfferCity;
   offers: OfferCardPrew[];
 }
 
@@ -20,7 +20,6 @@ const defaultCustomIcon = new Icon({
 
 const currentCustomIcon = new Icon({
   iconUrl: UrlMarker.CURRENT,
-
 });
 
 function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
