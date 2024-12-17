@@ -4,16 +4,17 @@ import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import { AppRoutes, AuthorisationStatus, placesToStay } from '../libs/const';
+import { AppRoutes, AuthorisationStatus } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
-import { Offer } from '../libs/types/types';
 import Layout from '../layout/Layout';
+import { OfferCardPrew } from '@/libs/types/types';
 
 type AppOffersProps = {
-  offers: Offer[];
+  offers: OfferCardPrew[];
 }
 
 function App({offers}: AppOffersProps) {
+  const placesToStay = offers.length;
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
