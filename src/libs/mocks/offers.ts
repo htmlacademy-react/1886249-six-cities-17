@@ -560,7 +560,7 @@ export const offers = [
     'city': {
       'name': 'Paris',
       'location': {
-        'latitude': 48.85661,
+        'latitude': 48.855,
         'longitude': 2.351499,
         'zoom': 13
       }

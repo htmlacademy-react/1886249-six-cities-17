@@ -10,8 +10,6 @@ export default function MainPage (): JSX.Element {
 
   const [activeCity, setActiveCity] = useState(Cities.PARIS);
 
-  // const [cityForOffers, setCityForOffers] = useState(DEFAULT_CITY)
-
   const particularCityOffers = offers.filter((offer) => offer.city.name === activeCity.toString());
 
   const placesToStay = particularCityOffers.length;

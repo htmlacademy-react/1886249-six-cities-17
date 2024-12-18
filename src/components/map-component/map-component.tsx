@@ -38,7 +38,7 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
 
         marker
           .setIcon(
-            selectedOffer !== undefined && offer.title === selectedOffer.title
+            selectedOffer !== undefined && offer.id === selectedOffer.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -49,7 +49,7 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, offers, selectedOffer]);
+  }, [map, offers, selectedOffer, city]);
   return (
     <section className={clsx(`${mapType}__map map`)} ref={mapRef}/>
   );

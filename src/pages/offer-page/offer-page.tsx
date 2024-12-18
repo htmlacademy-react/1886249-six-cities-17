@@ -1,16 +1,33 @@
+import Offer from '@/components/offer/offer/Offer';
 import NearPlaces from '../../components/offer/near-places/near-places';
-import Offer from '../../components/offer/offer/offer';
+import { offers } from '@/libs/mocks/offers';
+import { useParams } from 'react-router-dom';
+import { offersFull } from '@/libs/mocks/offers-full';
+import { useState } from 'react';
+import { OfferCardPrew } from '@/libs/types/types';
 
 
 function OfferPage() {
+  const {id} = useParams();
+
+  const currentOffer = offersFull.find((offer) => offer.id === id);
+
+  const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(4);
+
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
+
+  const handleListItemHover = (listItemName: string) => {
+    const currentPoint = offers.find((offer) => offer.title === listItemName);
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <main className="page__main page__main--offer">
-      <Offer/>
+      <Offer currentOffer={currentOffer} nearOffers={nearOffers} selectedPoint={selectedPoint}/>
       <div className="container">
-        <NearPlaces/>
+        <NearPlaces onListItemHover={handleListItemHover} nearOffers={offers} />
       </div>
     </main>
-
   );
 }
 
