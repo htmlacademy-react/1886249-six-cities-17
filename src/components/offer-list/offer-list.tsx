@@ -9,7 +9,6 @@ type OfferListProps = {
   offerCardType: CardType;
 }
 
-
 function OfferList({offers, onListItemHover, offerCardType}: OfferListProps) {
 
   return (

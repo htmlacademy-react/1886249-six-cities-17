@@ -17,7 +17,7 @@ function OfferPage() {
 
   const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
 
-  const handleListItemHover = (listItemID: string) => {
+  const handleListItemHover = (listItemID: string| null) => {
     const currentPoint = offers.find((offer) => offer.id === listItemID);
     setSelectedPoint(currentPoint);
   };
@@ -26,7 +26,7 @@ function OfferPage() {
     <main className="page__main page__main--offer">
       <Offer currentOffer={currentOffer} nearOffers={nearOffers} selectedPoint={selectedPoint}/>
       <div className="container">
-        <NearPlaces onListItemHover={handleListItemHover} nearOffers={offers} />
+        <NearPlaces onListItemHover={handleListItemHover} offers={nearOffers} />
       </div>
     </main>
   );
