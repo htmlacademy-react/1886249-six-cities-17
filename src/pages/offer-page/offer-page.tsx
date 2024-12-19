@@ -9,15 +9,16 @@ import { OfferCardPrew } from '@/libs/types/types';
 
 function OfferPage() {
   const {id} = useParams();
+  const trimmedId = id?.slice(1);
 
-  const currentOffer = offersFull.find((offer) => offer.id === id);
+  const currentOffer = offersFull.find((offer) => offer.id === trimmedId);
 
   const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(4);
 
   const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
 
-  const handleListItemHover = (listItemName: string) => {
-    const currentPoint = offers.find((offer) => offer.title === listItemName);
+  const handleListItemHover = (listItemID: string) => {
+    const currentPoint = offers.find((offer) => offer.id === listItemID);
     setSelectedPoint(currentPoint);
   };
 

@@ -19,8 +19,8 @@ function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCiti
     undefined
   );
 
-  const handleListItemHover = (listItemName: string) => {
-    const currentPoint = offers.find((offer) => offer.title === listItemName);
+  const handleListItemHover = (listItemId: string | null) => {
+    const currentPoint = offers.find((offer) => offer.id === listItemId);
     setSelectedPoint(currentPoint);
   };
 

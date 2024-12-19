@@ -5,10 +5,10 @@ import { OfferCardPrew } from '@/libs/types/types';
 
 type NearPlacesProps = {
   nearOffers: OfferCardPrew[];
-  onListItemHover: (listItemName: string) => void;
+  onListItemHover: (listItemID: string) => void;
 }
 
-function NearPlaces({nearOffers}: NearPlacesProps) {
+function NearPlaces({nearOffers, onListItemHover}: NearPlacesProps) {
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>

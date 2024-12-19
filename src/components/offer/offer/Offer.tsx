@@ -13,16 +13,11 @@ type OfferProps = {
 
 function Offer({nearOffers, currentOffer, selectedPoint}: OfferProps) {
 
-  const cityForOffers: OfferCity = CITIES_LOCATIONS.find((city) => {
-    if (city.name === currentOffer.city.name) {
-      return city;
-    }
-  });
-
+  const cityForOffers: OfferCity = CITIES_LOCATIONS.find((city) => city.name === currentOffer.city.name);
 
   return (
     <section className="offer">
-      <OfferGalary images={currentOffer?.images}/>
+      <OfferGalary images={currentOffer.images}/>
       <OfferDescription currentOffer={currentOffer}/>
       <MapComponent mapType={MapType.OfferMap} offers={nearOffers} selectedOffer={selectedPoint} city={cityForOffers}/>
     </section>
