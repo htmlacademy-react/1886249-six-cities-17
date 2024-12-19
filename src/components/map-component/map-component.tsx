@@ -35,7 +35,6 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
           lat: offer.location.latitude,
           lng: offer.location.longitude
         });
-
         marker
           .setIcon(
             selectedOffer !== undefined && offer.id === selectedOffer.id
@@ -44,12 +43,18 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
           )
           .addTo(markerLayer);
       });
-
       return () => {
         map.removeLayer(markerLayer);
       };
     }
   }, [map, offers, selectedOffer, city]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [city.location, map]);
+
   return (
     <section className={clsx(`${mapType}__map map`)} ref={mapRef}/>
   );
