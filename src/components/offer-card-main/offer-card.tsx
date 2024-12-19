@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
-import { CardType, ImgSettings } from '../../libs/const';
+import { BookmarkOfferCard, CardType, ImgSettings, OfferType } from '../../libs/const';
 import Rating from '../offer/rating/rating';
-import AddToBookmarks from '../offer/add-to-bookmarks-btn/add-to-bookmarks-btn';
+import AddToBookmarks from '../add-to-bookmarks-btn/add-to-bookmarks-btn';
 import { OfferCardPrew } from '@/libs/types/types';
 
 
@@ -38,7 +38,7 @@ export default function OfferCard ({offer, onListItemHover, offerCardType}: Offe
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <AddToBookmarks offerCardType={offerCardType}/>
+          <AddToBookmarks bookmarkSizeType={BookmarkOfferCard} offerCardType={offerCardType} offerType={OfferType.OfferCard}/>
         </div>
         <Rating offerCardType={offerCardType}/>
         <h2 className="place-card__name">

@@ -42,6 +42,21 @@ export enum MapType {
   OfferMap = 'offer'
 }
 
+export enum OfferType {
+  OfferFull = 'offer',
+  OfferCard = 'place-card'
+}
+
+export enum BookmarkOfferFull {
+  Width = 31,
+  Height = 33,
+
+}
+export enum BookmarkOfferCard {
+  Width = 18,
+  Height = 19
+}
+
 export const Leaflet = {
   URL_TEMPLATE: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   OPTIONS:

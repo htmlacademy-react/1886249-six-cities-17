@@ -1,6 +1,8 @@
+import AddToBookmarks from '@/components/add-to-bookmarks-btn/add-to-bookmarks-btn';
 import { OfferFull } from '../../../libs/types/types';
 import HostInfo from '../host-info/host-info';
 import OfferReviews from '../offer-reviews/offer-reviews';
+import { BookmarkOfferFull, OfferType } from '@/libs/const';
 
 type OfferDescription = {
   currentOffer: OfferFull | undefined;
@@ -19,12 +21,7 @@ function OfferDescription({currentOffer}: OfferDescription) {
           <h1 className="offer__name">
             {currentOffer?.title}
           </h1>
-          <button className="offer__bookmark-button button" type="button">
-            <svg className="offer__bookmark-icon" width={31} height={33}>
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <AddToBookmarks offerType={OfferType.OfferFull} bookmarkSizeType={BookmarkOfferFull}/>
         </div>
         <div className="offer__rating rating">
           <div className="offer__stars rating__stars">
