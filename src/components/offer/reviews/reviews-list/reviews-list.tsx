@@ -1,9 +1,14 @@
+import { Review } from '@/libs/types/types';
 import ReviewItem from '../review-item/review-item';
 
-function ReviewsList() {
+type ReviewsListProps = {
+  reviews: Review[];
+}
+
+function ReviewsList({reviews}: ReviewsListProps) {
   return (
     <ul className="reviews__list">
-      <ReviewItem/>
+      {reviews.map(review => <ReviewItem review={review} key={review.id}/>)}
     </ul>
   );
 }
