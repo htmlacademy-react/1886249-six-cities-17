@@ -10,20 +10,16 @@ import { OfferCardPrew, OfferCity } from '@/libs/types/types';
 type MapProps = {
   mapType: MapType;
   selectedOffer: OfferCardPrew | undefined;
-  city: OfferCity; //это правильный тип (имя и локация)
+  city: OfferCity;
   offers: OfferCardPrew[];
 }
 
 const defaultCustomIcon = new Icon({
   iconUrl: UrlMarker.DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: UrlMarker.CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
 });
 
 function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
@@ -39,21 +35,26 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
           lat: offer.location.latitude,
           lng: offer.location.longitude
         });
-
         marker
           .setIcon(
-            selectedOffer !== undefined && offer.title === selectedOffer.title
+            selectedOffer !== undefined && offer.id === selectedOffer.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
           .addTo(markerLayer);
       });
-
       return () => {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, offers, selectedOffer]);
+  }, [map, offers, selectedOffer, city]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [city.location, map]);
+
   return (
     <section className={clsx(`${mapType}__map map`)} ref={mapRef}/>
   );
