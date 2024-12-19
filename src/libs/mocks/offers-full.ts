@@ -1,7 +1,7 @@
 
 export const offersFull = [
   {
-    'id': 'eceb388d-1251-416a-a72d-9df79f4558f0',
+    'id': 'ae0b85da-7663-4de3-895a-a2402e24a468',
     'title': 'Tile House',
     'description': 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
     'type': 'apartment',
@@ -54,7 +54,59 @@ export const offersFull = [
     'maxAdults': 8
   },
   {
-    'id': '4bebcc66-89cb-4227-b8cf-7f78c03ce1b5',
+    'id': '03fa52e3-5c65-47e7-90a2-beec4883d130',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.8444,
+      'longitude': 2.33688,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '87ce0a00-6838-476d-a60a-19f65d1ca52b',
     'title': 'Nice, cozy, warm big bed apartment',
     'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
     'type': 'apartment',
@@ -78,6 +130,266 @@ export const offersFull = [
     'location': {
       'latitude': 48.83861,
       'longitude': 2.350499,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '66eb0b3f-db45-4219-9eec-94e0b33841c2',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.8666,
+      'longitude': 2.34333,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '530f59c9-7003-49a0-9d74-69a5e7c5bb09',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.87777,
+      'longitude': 2.35666,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '25e8e430-69e7-4a61-a899-2c367ef83fbf',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.85555,
+      'longitude': 2.45435,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '52ad18e7-9409-4a34-8885-ec68f6eaca48',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.832356,
+      'longitude': 2.67659,
+      'zoom': 16
+    },
+    'goods': [
+      'Kitchen',
+      'Coffee machine',
+      'Wi-Fi',
+      'Dishwasher',
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Fridge',
+      'Cable TV',
+      'Baby seat',
+      'Washing machine',
+      'Air conditioning',
+      'Towels'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 4.1,
+    'bedrooms': 3,
+    'maxAdults': 7
+  },
+  {
+    'id': '488d64d6-9592-4197-84a6-3f594f5d4578',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'apartment',
+    'price': 425,
+    'images': [
+      'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://16.design.htmlacademy.pro/static/hotel/16.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.5656,
+      'longitude': 2.5664,
       'zoom': 16
     },
     'goods': [

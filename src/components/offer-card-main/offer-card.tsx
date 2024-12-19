@@ -8,16 +8,16 @@ import { OfferCardPrew } from '@/libs/types/types';
 
 type OfferCardProps = {
   offer: OfferCardPrew;
-  handleListItemHover: (listItemName: string | null) => void;
+  onListItemHover: (listItemId: string | null) => void;
   offerCardType: CardType;
 }
 
-export default function OfferCard ({offer, handleListItemHover, offerCardType}: OfferCardProps) {
+export default function OfferCard ({offer, onListItemHover, offerCardType}: OfferCardProps) {
 
   const {id, previewImage, isPremium, price, title} = offer;
 
   return (
-    <article onMouseEnter={() => handleListItemHover && handleListItemHover(offer.title)} onMouseLeave={() => handleListItemHover && handleListItemHover(null)} className={clsx('place-card', `${offerCardType}__card`)}>
+    <article onMouseEnter={() => onListItemHover && onListItemHover(id)} onMouseLeave={() => onListItemHover && onListItemHover(null)} className={clsx('place-card', `${offerCardType}__card`)}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

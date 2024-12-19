@@ -24,8 +24,6 @@ export enum AppRoutes {
   Error = '*'
 }
 
-export const placesToStay = 312;
-
 export enum ImgSettings {
   OfferCardWidth= 260,
   OfferCardHeight = 200,
