@@ -4,20 +4,16 @@ import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import { AppRoutes, AuthorisationStatus, placesToStay } from '../libs/const';
+import { AppRoutes, AuthorisationStatus } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
-import { Offer } from '../libs/types/types';
 import Layout from '../layout/Layout';
 
-type AppOffersProps = {
-  offers: Offer[];
-}
+function App() {
 
-function App({offers}: AppOffersProps) {
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index element={<MainPage offers={offers} placesToStay={placesToStay} />} />
+        <Route index element={<MainPage/>} />
         <Route path={AppRoutes.Favourites} element={
           <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
         }

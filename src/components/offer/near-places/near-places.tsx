@@ -1,15 +1,19 @@
-
+import './near-places.css';
 import OfferList from '@/components/offer-list/offer-list';
 import { CardType } from '@/libs/const';
-import { nearPlaces } from '@/libs/mocks/near-places';
+import { OfferCardPrew } from '@/libs/types/types';
 
+type NearPlacesProps = {
+  offers: OfferCardPrew[];
+  onListItemHover: (listItemID: string | null) => void;
+}
 
-function NearPlaces() {
+function NearPlaces({offers, onListItemHover}: NearPlacesProps) {
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       {/* FIXME: ЛИСТ  ДОЛЖЕН БЫТЬ ROW А НЕ COLUMN */}
-      <OfferList offers={nearPlaces} offerCardType={CardType.NearCard}/>
+      <OfferList offers={offers} offerCardType={CardType.NearCard} onListItemHover={onListItemHover}/>
     </section>
   );
 }

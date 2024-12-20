@@ -24,8 +24,6 @@ export enum AppRoutes {
   Error = '*'
 }
 
-export const placesToStay = 312;
-
 export enum ImgSettings {
   OfferCardWidth= 260,
   OfferCardHeight = 200,
@@ -42,6 +40,21 @@ export enum CardType {
 export enum MapType {
   MainMap = 'cities',
   OfferMap = 'offer'
+}
+
+export enum OfferType {
+  OfferFull = 'offer',
+  OfferCard = 'place-card'
+}
+
+export enum BookmarkOfferFull {
+  Width = 31,
+  Height = 33,
+
+}
+export enum BookmarkOfferCard {
+  Width = 18,
+  Height = 19
 }
 
 export const Leaflet = {
