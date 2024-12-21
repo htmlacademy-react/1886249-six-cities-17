@@ -1,5 +1,5 @@
 import './near-places.css';
-import OfferList from '@/components/offer-list/offer-list';
+import OfferList from '@/components/main/offer-list/offer-list';
 import { CardType } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 

@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
-import { BookmarkOfferCard, CardType, ImgSettings, OfferType } from '../../libs/const';
-import Rating from '../offer/rating/rating';
-import AddToBookmarks from '../add-to-bookmarks-btn/add-to-bookmarks-btn';
+import { BookmarkOfferCard, CardType, ImgSettings, OfferType } from '../../../libs/const';
+import Rating from '../../offer/rating/rating';
+import AddToBookmarks from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
 import { OfferCardPrew } from '@/libs/types/types';
 
 

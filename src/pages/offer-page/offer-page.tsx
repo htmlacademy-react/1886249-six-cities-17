@@ -13,7 +13,7 @@ function OfferPage() {
 
   const currentOffer = offersFull.find((offer) => offer.id === trimmedId);
 
-  const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(4);
+  const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(0,4);
 
   const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
 
