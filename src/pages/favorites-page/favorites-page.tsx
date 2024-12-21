@@ -1,7 +1,7 @@
 
 import { CardType } from '../../libs/const';
 import Footer from '../../components/footer/footer';
-import OfferCard from '../../components/offer-card-main/offer-card';
+import OfferCard from '../../components/main/offer-card-main/offer-card';
 import { favourites } from '../../libs/mocks/favourites';
 
 

@@ -1,5 +1,5 @@
-import MainCitiesLocations from '@/components/main-cities-locations/main-cities-locations';
-import MainCitiesContainer from '@/components/main-cities-container/main-cities-container';
+import MainCitiesLocations from '@/components/main/main-cities-locations/main-cities-locations';
+import MainCitiesContainer from '@/components/main/main-cities-container/main-cities-container';
 import { CITIES_LOCATIONS, DEFAULT_CITY } from '@/libs/mocks/cities-locations';
 import { useAppSelector } from '@/hooks';
 

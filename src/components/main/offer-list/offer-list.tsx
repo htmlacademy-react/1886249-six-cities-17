@@ -1,5 +1,5 @@
-import { CardType } from '../../libs/const';
-import { OfferCardPrew } from '../../libs/types/types';
+import { CardType } from '../../../libs/const';
+import { OfferCardPrew } from '../../../libs/types/types';
 import OfferCard from '../offer-card-main/offer-card';
 import clsx from 'clsx';
 
