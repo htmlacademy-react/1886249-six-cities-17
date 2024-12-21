@@ -24,6 +24,7 @@ function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCiti
     setSelectedPoint(currentPoint);
   };
 
+
   return (
     <div className="cities">
       {offers.length > 0 ?
