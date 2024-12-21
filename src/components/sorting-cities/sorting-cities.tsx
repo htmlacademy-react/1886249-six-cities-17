@@ -1,6 +1,8 @@
+import { useAppSelector } from '@/hooks';
 import { SortItem } from '@/libs/const';
 
 function SortingCities() {
+  const currentSort = useAppSelector((state) => state.currentSort);
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -11,11 +13,7 @@ function SortingCities() {
         </svg>
       </span>
       <ul className="places__options places__options--custom places__options--opened">
-        {Object.values(SortItem).map((sortIem) => <li key={sortIem} className="places__option places__option--active" tabIndex={0}>{sortIem}</li>)}
-        {/* <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-        <li className="places__option" tabIndex={0}>Price: low to high</li>
-        <li className="places__option" tabIndex={0}>Price: high to low</li>
-        <li className="places__option" tabIndex={0}>Top rated first</li> */}
+        {Object.values(SortItem).map((sortIem) => <li key={sortIem} className={currentSort === sortIem ? 'places__option places__option--active' : 'places__option'} tabIndex={0}>{sortIem}</li>)}
       </ul>
     </form>
   );

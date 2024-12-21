@@ -1,11 +1,12 @@
-import { Cities } from '@/libs/const';
+import { Cities, SortItem } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import {createReducer} from '@reduxjs/toolkit';
-import { changeActiveCity, loadOffers } from './action';
+import { changeActiveCity, changeCurrentSort, loadOffers } from './action';
 
 const initialState = {
   activeCity: Cities.PARIS,
   offers: [] as OfferCardPrew[],
+  currentSort: SortItem.Popular,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -15,5 +16,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changeActiveCity, (state, action) => {
       state.activeCity = action.payload;
+    })
+    .addCase(changeCurrentSort, (state, action) => {
+      state.currentSort = action.payload;
     });
 });
