@@ -1,3 +1,5 @@
+import { SortItem } from '@/libs/const';
+
 function SortingCities() {
   return (
     <form className="places__sorting" action="#" method="get">
@@ -9,10 +11,11 @@ function SortingCities() {
         </svg>
       </span>
       <ul className="places__options places__options--custom places__options--opened">
-        <li className="places__option places__option--active" tabIndex={0}>Popular</li>
+        {Object.values(SortItem).map((sortIem) => <li key={sortIem} className="places__option places__option--active" tabIndex={0}>{sortIem}</li>)}
+        {/* <li className="places__option places__option--active" tabIndex={0}>Popular</li>
         <li className="places__option" tabIndex={0}>Price: low to high</li>
         <li className="places__option" tabIndex={0}>Price: high to low</li>
-        <li className="places__option" tabIndex={0}>Top rated first</li>
+        <li className="places__option" tabIndex={0}>Top rated first</li> */}
       </ul>
     </form>
   );

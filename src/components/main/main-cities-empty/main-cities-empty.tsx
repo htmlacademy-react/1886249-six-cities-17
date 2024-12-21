@@ -13,6 +13,7 @@ function CitiesEmpty({activeCity}: CitiesEmptyProps) {
           <p className="cities__status-description">We could not find any property available at the moment in {activeCity}</p>
         </div>
       </section>
+      {/* FIXME: NO PICTURE FOR RIGHT SECTION */}
       <div className="cities__right-section"></div>
     </div>
   );
