@@ -6,7 +6,6 @@ import SortingCities from '../../sorting-cities/sorting-cities';
 import { OfferCardPrew, OfferCity,} from '@/libs/types/types';
 import CitiesEmpty from '../main-cities-empty/main-cities-empty';
 
-
 type MainCitiesContainerProps = {
   placesToStay: number;
   offers: OfferCardPrew[];
@@ -39,7 +38,7 @@ function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCiti
             <MapComponent mapType={MapType.MainMap} city={city} offers={offers} selectedOffer={selectedPoint}/>
           </div>
         </div>
-        : <CitiesEmpty/>}
+        : <CitiesEmpty activeCity={activeCity}/>}
     </div>
   );
 }
