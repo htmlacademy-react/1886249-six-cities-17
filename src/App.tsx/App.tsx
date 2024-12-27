@@ -4,16 +4,22 @@ import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import { AppRoutes, AuthorisationStatus } from '../libs/const';
+import { AppRoutes, AuthorisationStatus} from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
+import { useSelector } from 'react-redux';
+import { offersSelectors } from '@/storage/slices/offers';
 
 function App() {
+
+  const activeCity = useSelector(offersSelectors.selectActiveCity);
+  const offers = useSelector(offersSelectors.selectOffers);
+
 
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index element={<MainPage/>} />
+        <Route index element={<MainPage activeCity={activeCity} offers={offers} />} />
         <Route path={AppRoutes.Favourites} element={
           <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
         }

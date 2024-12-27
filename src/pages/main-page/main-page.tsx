@@ -1,14 +1,17 @@
 import MainCitiesLocations from '@/components/main/main-cities-locations/main-cities-locations';
 import MainCitiesContainer from '@/components/main/main-cities-container/main-cities-container';
 import { CITIES_LOCATIONS, DEFAULT_CITY } from '@/libs/mocks/cities-locations';
-import { useAppSelector } from '@/hooks';
+import { Cities } from '@/libs/const';
+import { OfferCardPrew } from '@/libs/types/types';
 
 
-export default function MainPage (): JSX.Element {
+type MainPageProps = {
+  activeCity: Cities;
+  offers: OfferCardPrew[];
+}
 
-  const activeCity = useAppSelector((state) => state.activeCity);
+export default function MainPage ({activeCity, offers}: MainPageProps): JSX.Element {
 
-  const offers = useAppSelector((state) => state.offers);
   const particularCityOffers = offers.filter((offer) => offer.city.name === activeCity.toString());
 
   const placesToStay = particularCityOffers.length;
@@ -18,7 +21,6 @@ export default function MainPage (): JSX.Element {
       return city;
     }
   });
-
 
   const safeCityForOffers = cityForOffers !== undefined ? cityForOffers : DEFAULT_CITY;
 
