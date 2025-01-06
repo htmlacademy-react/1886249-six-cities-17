@@ -321,52 +321,52 @@ export const offers = [
     'isPremium': true,
     'rating': 4.5
   },
-  {
-    'id': 'e107a7b2-2001-414f-acbe-d3c213ccff22',
-    'title': 'Tile House',
-    'type': 'apartment',
-    'price': 451,
-    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/1.jpg',
-    'city': {
-      'name': 'Hamburg',
-      'location': {
-        'latitude': 53.550341,
-        'longitude': 10.000654,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 53.574341000000004,
-      'longitude': 10.022654000000001,
-      'zoom': 16
-    },
-    'isFavorite': false,
-    'isPremium': true,
-    'rating': 1.7
-  },
-  {
-    'id': '3e92c223-9ff3-4d45-b4ee-91b02c48a7f9',
-    'title': 'The Joshua Tree House',
-    'type': 'hotel',
-    'price': 497,
-    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/1.jpg',
-    'city': {
-      'name': 'Hamburg',
-      'location': {
-        'latitude': 53.550341,
-        'longitude': 10.000654,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 53.573341000000006,
-      'longitude': 10.025654000000001,
-      'zoom': 16
-    },
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 2.2
-  },
+  // {
+  //   'id': 'e107a7b2-2001-414f-acbe-d3c213ccff22',
+  //   'title': 'Tile House',
+  //   'type': 'apartment',
+  //   'price': 451,
+  //   'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/1.jpg',
+  //   'city': {
+  //     'name': 'Hamburg',
+  //     'location': {
+  //       'latitude': 53.550341,
+  //       'longitude': 10.000654,
+  //       'zoom': 13
+  //     }
+  //   },
+  //   'location': {
+  //     'latitude': 53.574341000000004,
+  //     'longitude': 10.022654000000001,
+  //     'zoom': 16
+  //   },
+  //   'isFavorite': false,
+  //   'isPremium': true,
+  //   'rating': 1.7
+  // },
+  // {
+  //   'id': '3e92c223-9ff3-4d45-b4ee-91b02c48a7f9',
+  //   'title': 'The Joshua Tree House',
+  //   'type': 'hotel',
+  //   'price': 497,
+  //   'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/1.jpg',
+  //   'city': {
+  //     'name': 'Hamburg',
+  //     'location': {
+  //       'latitude': 53.550341,
+  //       'longitude': 10.000654,
+  //       'zoom': 13
+  //     }
+  //   },
+  //   'location': {
+  //     'latitude': 53.573341000000006,
+  //     'longitude': 10.025654000000001,
+  //     'zoom': 16
+  //   },
+  //   'isFavorite': false,
+  //   'isPremium': false,
+  //   'rating': 2.2
+  // },
   {
     'id': '2101f69d-85b9-434e-bc19-0ffed0b8184a',
     'title': 'The Pondhouse - A Magical Place',

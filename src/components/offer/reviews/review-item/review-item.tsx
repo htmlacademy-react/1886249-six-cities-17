@@ -5,6 +5,10 @@ type ReviewItemProps = {
 }
 
 function ReviewItem({review}: ReviewItemProps) {
+  const dateIso = review.date;
+  const date = new Date(dateIso);
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric'});
+  const formattedDate = dateFormatter.format(date);
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -25,7 +29,7 @@ function ReviewItem({review}: ReviewItemProps) {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+        <time className="reviews__time" dateTime="2019-04-24">{formattedDate}</time>
       </div>
     </li>
   );
