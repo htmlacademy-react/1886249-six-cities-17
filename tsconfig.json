@@ -24,8 +24,10 @@
     "paths": {
       "@/*": ["src/*"],
       "@pages": ["src/pages/*"],
-      "@components" : ["src/components/*"],
-      "@libs": ["src/libs*"]
+      "@components": ["src/components/*"],
+      "@libs": ["src/libs*"],
+      "@storage": ["src/storage/*"],
+      "@slices": ["src/storage/slices/*"],
     },
   },
   "include": ["src", "vite.config.ts"],

@@ -9,6 +9,7 @@ import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
 import { useSelector } from 'react-redux';
 import { offersSelectors } from '@/storage/slices/offers';
+import MainEmptyPage from '@/pages/main-empty/main-empty';
 
 function App() {
 
@@ -19,12 +20,12 @@ function App() {
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index element={<MainPage activeCity={activeCity} offers={offers} />} />
+        <Route index element={<MainPage activeCity={activeCity} offers={offers}/>} />
         <Route path={AppRoutes.Favourites} element={
           <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
         }
         />
-        <Route path={AppRoutes.Offer} element={<OfferPage />} />
+        {/* <Route path={AppRoutes.Offer} element={<OfferPage offers={offers} />} /> */}
       </Route>
       <Route path={AppRoutes.Login} element={<LoginPage />} />
       <Route path={AppRoutes.Error} element={<NotFoundPage />} />

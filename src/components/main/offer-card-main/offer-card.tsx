@@ -1,46 +1,78 @@
 import { clsx } from 'clsx';
 import { Link } from 'react-router-dom';
-import { BookmarkOfferCard, CardType, ImgSettings, OfferType } from '../../../libs/const';
+import {
+  BookmarkOfferCard,
+  CardType,
+  ImgSettings,
+  OfferType,
+} from '../../../libs/const';
 import Rating from '../../offer/rating/rating';
 import AddToBookmarks from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
-import { OfferCardPrew } from '@/libs/types/types';
-
+import type { OfferCardPrew } from '@/libs/types/types';
 
 type OfferCardProps = {
-  offer: OfferCardPrew;
-  onListItemHover: (listItemId: string | null) => void;
-  offerCardType: CardType;
-}
+	offer: OfferCardPrew;
+	onListItemHover: (listItemId: string | null) => void;
+	offerCardType: CardType;
+};
 
-export default function OfferCard ({offer, onListItemHover, offerCardType}: OfferCardProps) {
-
-  const {id, previewImage, isPremium, price, title} = offer;
+export default function OfferCard({
+  offer,
+  onListItemHover,
+  offerCardType,
+}: OfferCardProps) {
+  const { id, previewImage, isPremium, price, title } = offer;
 
   return (
-    <article onMouseEnter={() => onListItemHover && onListItemHover(id)} onMouseLeave={() => onListItemHover && onListItemHover(null)} className={clsx('place-card', `${offerCardType}__card`)}>
-      {isPremium ?
+    <article
+      onMouseEnter={() => onListItemHover?.(id)}
+      onMouseLeave={() => onListItemHover?.(null)}
+      className={clsx('place-card', `${offerCardType}__card`)}
+    >
+      {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
-        : null}
+      ) : null}
       <div
-        className={clsx(`${offerCardType}__image-wrapper`, 'place-card__image-wrapper')}
+        className={clsx(
+          `${offerCardType}__image-wrapper`,
+          'place-card__image-wrapper',
+        )}
       >
         <Link to={`offer/:${id}`}>
-          <img className="place-card__image" src={previewImage}
-            width={offerCardType === CardType.FavoritesCard ? ImgSettings.FavouriteCardWidth : ImgSettings.OfferCardWidth} height={CardType.FavoritesCard ? ImgSettings.FavouriteCardHeight : ImgSettings.OfferCardHeight} alt="Place image"
+          <img
+            className="place-card__image"
+            src={previewImage}
+            width={
+              offerCardType === CardType.FavoritesCard
+                ? ImgSettings.FavouriteCardWidth
+                : ImgSettings.OfferCardWidth
+            }
+            height={
+              CardType.FavoritesCard
+                ? ImgSettings.FavouriteCardHeight
+                : ImgSettings.OfferCardHeight
+            }
+            alt="Place image"
           />
         </Link>
       </div>
-      <div className={`${CardType.FavoritesCard && 'favorites__card-info'} place-card__info`}>
+      <div
+        className={`${CardType.FavoritesCard && 'favorites__card-info'} place-card__info`}
+      >
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <AddToBookmarks bookmarkSizeType={BookmarkOfferCard} offerCardType={offerCardType} offerType={OfferType.OfferCard}/>
+          <AddToBookmarks
+            bookmarkSizeType={BookmarkOfferCard}
+            offerCardType={offerCardType}
+            offerType={OfferType.OfferCard}
+          />
         </div>
-        <Rating offerCardType={offerCardType}/>
+        <Rating offerCardType={offerCardType} />
         <h2 className="place-card__name">
           <Link to={`offer/:${id}`}>{title}</Link>
         </h2>

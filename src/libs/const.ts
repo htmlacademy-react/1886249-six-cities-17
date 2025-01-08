@@ -77,3 +77,7 @@ export enum SortItem {
   PriceHigh = 'Price: high to low',
   Rating = 'Top rated first',
 }
+
+export enum APIRouts {
+  Cards = '/offers',
+}

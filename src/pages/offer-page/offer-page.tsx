@@ -1,13 +1,15 @@
 import Offer from '@/components/offer/offer/Offer';
 import NearPlaces from '../../components/offer/near-places/near-places';
-import { offers } from '@/libs/mocks/offers';
 import { useParams } from 'react-router-dom';
 import { offersFull } from '@/libs/mocks/offers-full';
 import { useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
 
+type OfferPageProps = {
+  offers: OfferCardPrew[];
+}
 
-function OfferPage() {
+function OfferPage({offers}: OfferPageProps) {
   const {id} = useParams();
   const trimmedId = id?.slice(1);
 

@@ -1,19 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { OFFERS_SLICE_NAME } from './sliceName';
-import { Cities, SortItem } from '@/libs/const';
-import { OfferCardPrew } from '@/libs/types/types';
-import { offers } from '@/libs/mocks/offers';
+import { AuthorisationStatus, Cities, SortItem } from '@/libs/const';
+import type { OfferCardPrew } from '@/libs/types/types';
+
 
 export type OffersState = {
      activeCity: Cities;
     offers: OfferCardPrew[];
     currentSort: SortItem;
+    authorisationStatus: AuthorisationStatus;
 }
 
 const initialState: OffersState = {
   activeCity: Cities.PARIS,
-  offers: offers,
+  offers: [],
   currentSort: SortItem.Popular,
+  authorisationStatus: AuthorisationStatus.Unknown
 };
 
 const offersSlice = createSlice({
@@ -34,6 +36,7 @@ const offersSlice = createSlice({
     selectActiveCity: (state) => state.activeCity,
     selectCurrentSort: (state) => state.currentSort,
     selectOffers: (state) => state.offers,
+    selectAuthorisationStatus: (state) => state.authorisationStatus,
   }
 });
 
