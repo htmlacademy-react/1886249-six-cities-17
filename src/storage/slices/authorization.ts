@@ -37,3 +37,5 @@ const authorisationSlice = createSlice({
 
 export const authorisationAction = authorisationSlice.actions;
 export const authorisationSelectors = authorisationSlice.selectors;
+
+export default authorisationSlice;

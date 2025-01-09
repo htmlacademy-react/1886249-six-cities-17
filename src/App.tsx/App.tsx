@@ -8,9 +8,10 @@ import { AppRoutes, AuthorisationStatus} from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { offersActions, offersSelectors } from '@/storage/slices/offers';
+import { offersSelectors } from '@/storage/slices/offers';
 import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
+import { authorisationSelectors } from '@/storage/slices/authorization';
 
 function App() {
 
@@ -20,23 +21,18 @@ function App() {
     dispatch(fetchOffers());
   }, [dispatch]);
 
-  // const handleRequest = () => {
-  //   dispatch(fetchOffers());
-  // };
-
-  // handleRequest();
-
   const offers = useSelector(offersSelectors.selectOffers);
 
   const activeCity = useSelector(offersSelectors.selectActiveCity);
 
+  const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
 
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
         <Route index element={<MainPage activeCity={activeCity} offers={offers}/>} />
         <Route path={AppRoutes.Favourites} element={
-          <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
+          <PrivateRoute authorisationStatus={authState}><FavouritesPage /></PrivateRoute>
         }
         />
         <Route path={AppRoutes.Offer} element={<OfferPage offers={offers} />} />
