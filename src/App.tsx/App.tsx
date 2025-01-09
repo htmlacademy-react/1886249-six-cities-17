@@ -8,7 +8,7 @@ import { AppRoutes, AuthorisationStatus} from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { offersSelectors } from '@/storage/slices/offers';
+import { offersActions, offersSelectors } from '@/storage/slices/offers';
 import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 
@@ -18,7 +18,13 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchOffers());
-  },[dispatch]);
+  }, [dispatch]);
+
+  // const handleRequest = () => {
+  //   dispatch(fetchOffers());
+  // };
+
+  // handleRequest();
 
   const offers = useSelector(offersSelectors.selectOffers);
 

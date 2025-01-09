@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { OFFERS_SLICE_NAME } from './sliceName';
+import { OFFERS_SLICE_NAME } from './sliceNames';
 import { AuthorisationStatus, Cities, SortItem } from '@/libs/const';
 import { OfferCardPrew, RequestStatus } from '@/libs/types/types';
 import { fetchOffers } from '@/thunk/offers';
 
 
 export type OffersState = {
-     activeCity: Cities;
+    activeCity: Cities;
     offers: OfferCardPrew[];
     currentSort: SortItem;
     authorisationStatus: AuthorisationStatus;
@@ -29,9 +29,9 @@ const offersSlice = createSlice({
   name: OFFERS_SLICE_NAME,
   initialState,
   reducers: {
-    setOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
-      state.offers = action.payload;
-    },
+    // setOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
+    //   state.offers = action.payload;
+    // },
     setActiveCity: (state, action: PayloadAction<Cities>) => {
       state.activeCity = action.payload;
     },
@@ -63,7 +63,8 @@ const offersSlice = createSlice({
     selectCurrentSort: (state) => state.currentSort,
     selectOffers: (state) => state.offers,
     selectAuthorisationStatus: (state) => state.authorisationStatus,
-    selectLoadingStatus: (state) => state.loadingStatus
+    selectLoadingStatus: (state) => state.loadingStatus,
+    selectOffersRequestStatus: (state) => state.requestStatus
   }
 });
 

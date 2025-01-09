@@ -1,7 +1,7 @@
 import { APIRouts } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import { api } from '@/storage';
-import { OFFERS_SLICE_NAME } from '@/storage/slices/sliceName';
+import { OFFERS_SLICE_NAME } from '@/storage/slices/sliceNames';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
