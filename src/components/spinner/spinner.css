@@ -1,0 +1,13 @@
+.spinner-svg {
+  width: 80px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20%;
+  animation: spin 2s linear infinite;
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

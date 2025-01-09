@@ -1,11 +1,13 @@
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppDispatch } from '@/hooks';
 import { SortItem } from '@/libs/const';
-import { changeCurrentSort } from '@/store/action';
+import { offersActions, offersSelectors } from '@/storage/slices/offers';
 import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function SortingCities() {
-  const currentSort = useAppSelector((state) => state.currentSort);
-  const dispatch = useAppDispatch();
+
+  const currentSort = useSelector(offersSelectors.selectCurrentSort);
+
   const sortSpanRef = useRef<HTMLElement>(null);
   const [isSortMenuOpened, setSortMenuOpened] = useState(false);
   useEffect(() => {
@@ -32,7 +34,7 @@ function SortingCities() {
       </span>
       {isSortMenuOpened ?
         <ul className="places__options places__options--custom places__options--opened">
-          {Object.values(SortItem).map((sortIem) => <li key={sortIem} className={currentSort === sortIem ? 'places__option places__option--active' : 'places__option'} tabIndex={0} onClick={()=>(dispatch(changeCurrentSort(sortIem)))}>{sortIem}</li>)}
+          {Object.values(SortItem).map((sortIem) => <li key={sortIem} className={currentSort === sortIem ? 'places__option places__option--active' : 'places__option'} tabIndex={0} onClick={useAppDispatch(offersActions.changeCurrentSort(sortIem))}>{sortIem}</li>)}
         </ul> : null}
     </form>
   );

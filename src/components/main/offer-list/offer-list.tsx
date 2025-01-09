@@ -3,7 +3,8 @@ import { CardType } from '../../../libs/const';
 import { OfferCardPrew } from '../../../libs/types/types';
 import OfferCard from '../offer-card-main/offer-card';
 import clsx from 'clsx';
-import { useAppSelector } from '@/hooks';
+import { useSelector } from 'react-redux';
+import {offersSelectors} from '@/storage/slices/offers';
 
 type OfferListProps = {
   offers: OfferCardPrew[];
@@ -12,7 +13,7 @@ type OfferListProps = {
 }
 
 function OfferList({offers, onListItemHover, offerCardType}: OfferListProps) {
-  const currentSort = useAppSelector((state) => state.currentSort);
+  const currentSort = useSelector(offersSelectors.selectCurrentSort);
   const sortedOffers = sortOffers(offers, currentSort);
 
   return (
