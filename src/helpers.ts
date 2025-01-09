@@ -13,3 +13,16 @@ export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem) => {
       return offers;
   }
 };
+
+export const mapOffers = (offers: OfferCardPrew[]) => offers.map((item) => ({
+  location: item.location,
+  isFavorite: item.isFavorite,
+  isPremium: item.isPremium,
+  rating: item.rating,
+  id: item.id,
+  title: item.title,
+  type: item.type,
+  price: item.price,
+  city: item.city,
+  previewImage: item.previewImage
+}));

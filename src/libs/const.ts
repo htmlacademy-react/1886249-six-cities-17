@@ -79,5 +79,5 @@ export enum SortItem {
 }
 
 export enum APIRouts {
-  Cards = '/offers',
+  Offers = '/offers',
 }

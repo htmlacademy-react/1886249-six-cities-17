@@ -52,3 +52,10 @@ export type Review = {
   rating: 4;
 }
 
+export enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+}
+

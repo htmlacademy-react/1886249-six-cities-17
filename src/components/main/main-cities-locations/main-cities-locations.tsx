@@ -18,7 +18,7 @@ function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
               key={city}
               className="locations__item"
               onClick={() => {
-                dispatch(offersActions.changeActiveCity(city));
+                dispatch(offersActions.setActiveCity(city));
               }}
             >
               <Link

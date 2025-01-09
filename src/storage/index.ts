@@ -6,7 +6,7 @@ export const api = createAPI();
 
 const store = configureStore({
   reducer: {
-    [offersSlice.name] : offersSlice.reducer
+    [offersSlice.name]: offersSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
