@@ -1,3 +1,4 @@
+import './main-page.css';
 import MainCitiesLocations from '@/components/main/main-cities-locations/main-cities-locations';
 import MainCitiesContainer from '@/components/main/main-cities-container/main-cities-container';
 import { CITIES_LOCATIONS, DEFAULT_CITY } from '@/libs/mocks/cities-locations';
@@ -33,8 +34,11 @@ export default function MainPage ({activeCity, offers}: MainPageProps): JSX.Elem
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <MainCitiesLocations activeCity={activeCity} />
-      {offers.length > 0 && (!(isLoading === RequestStatus.Loading) ? <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/> : <Spinner />)}
-      {!offers.length && <MainEmpty activeCity={activeCity}/>}
+      {offers.length > 0 && (isLoading === RequestStatus.Success
+        ? <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/>
+        : <Spinner />)}
+      {isLoading === RequestStatus.Success && !offers.length && <MainEmpty activeCity={activeCity}/>}
+      {isLoading === RequestStatus.Failed && <p className='fail-message'>Oooooops... something went wrong, try one more time</p>}
     </main>
   );
 }

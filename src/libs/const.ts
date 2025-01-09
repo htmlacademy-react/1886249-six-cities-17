@@ -80,4 +80,5 @@ export enum SortItem {
 
 export enum APIRouts {
   Offers = '/offers',
+  Authorisation = '/six-cities/login',
 }

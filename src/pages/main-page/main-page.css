@@ -1,0 +1,5 @@
+.fail-message {
+  display: flex;
+  margin: 15% auto 0;
+  font-size: 25px;
+}
