@@ -66,8 +66,8 @@ function LoginPage() {
                   name="password"
                   placeholder="Password"
                   required
+                  pattern='^(?=.*[a-zA-Z])(?=.*\d)(?!.*^\s+$).+$'
                 />
-
               </div>
               <button
                 className="login__submit form__submit button"

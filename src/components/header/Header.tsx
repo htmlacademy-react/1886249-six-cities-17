@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { AppRoutes, AuthorisationStatus } from '../../libs/const';
 import Logo from '../logo/Logo';
 import { useSelector } from 'react-redux';
-import { authorisationAction, authorisationSelectors } from '@/storage/slices/authorization';
+import { authorisationSelectors } from '@/storage/slices/authorization';
 import { useAppDispatch } from '@/hooks';
+import { logout } from '@/thunk/authorisation';
 
 function Header() {
 
   const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
+  console.log('STATUS: ', authState);
 
   const dispatch = useAppDispatch();
 
@@ -32,7 +34,7 @@ function Header() {
                     </Link>
                   </li>
                   <li className="header__nav-item">
-                    <Link to={AppRoutes.Login} className="header__nav-link" onClick={()=> dispatch(authorisationAction.setAuthorisationStatus(AuthorisationStatus.NoAuth))}>
+                    <Link to={''} className="header__nav-link" onClick={()=> dispatch(logout)}>
                       <span className="header__signout">Sign out</span>
                     </Link>
                   </li>

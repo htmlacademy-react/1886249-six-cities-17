@@ -1,7 +1,8 @@
 import { AuthorisationStatus } from '@/libs/const';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
-import { checkAuthorisation, login } from '@/thunk/authorisation';
+import { checkAuthorisation, login, logout } from '@/thunk/authorisation';
+import { dropToken } from '@/services/token';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;
@@ -28,25 +29,24 @@ const authorisationSlice = createSlice({
         if (action.payload === 200) {
           state.status = AuthorisationStatus.Auth;
         }
+        console.log('checkAuthorisation checked');
+      })
+      .addCase(checkAuthorisation.pending, (_, action) => {
+
+        console.log('checkAuthorisation pending', action);
+      })
+      .addCase(checkAuthorisation.rejected, (state,action) => {
         if (action.payload === 401) {
           state.status = AuthorisationStatus.NoAuth;
         }
+        console.log('checkAuthorisation rejected', action.payload);
       })
-      .addCase(checkAuthorisation.rejected, (_,action) => {
-        //ЧТО ПИСАТЬ ЗДЕСЬ???????
-
-        // eslint-disable-next-line no-console
-        console.log('auth rejected', action.payload);
-      })
-      .addCase(checkAuthorisation.pending, (_, action) => {
-        //ЧТО ПИСАТЬ ЗДЕСЬ???????
-
-        // eslint-disable-next-line no-console
-        console.log('auth pending', action);
-      })
-      // ADDCASE почему-то не работает, поэтому использую addMatcher
-      .addMatcher(login.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state) => {
         state.status = AuthorisationStatus.Auth;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.status = AuthorisationStatus.NoAuth;
+        dropToken();
       });
   },
 });

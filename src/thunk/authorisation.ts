@@ -1,28 +1,38 @@
 
 import { APIRouts } from '@/libs/const';
-import { saveToken } from '@/services/token';
+import { getToken, saveToken } from '@/services/token';
 import { api } from '@/storage';
 import { AUTH_SLICE_NAME } from '@/storage/slices/sliceNames';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const path = `${AUTH_SLICE_NAME}${APIRouts.Authorisation}`;
 
-
-export const checkAuthorisation = createAsyncThunk(path, async (_, thunkApi) => {
+export const checkAuthorisation = createAsyncThunk(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
   try {
     const {status} = await api.get(APIRouts.Authorisation);
+    console.log('checkAuthorisation STATUS');
     return status;
   } catch (error) {
-    return thunkApi.rejectWithValue;
+    return thunkApi.rejectWithValue(error);
   }
 });
 
-export const login = createAsyncThunk(path, async (loginData: {email: string; password: string}, thunkApi) => {
+export const login = createAsyncThunk(`${AUTH_SLICE_NAME}/login`, async (loginData: {email: string; password: string}, thunkApi) => {
   try {
     const {data} = await api.post(APIRouts.Authorisation, loginData, { headers: {
       'Content-Type': 'application/json',}});
     saveToken(data.token);
     return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error);
+  }
+});
+
+export const logout = createAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_, thunkApi) => {
+  try {
+    const {status} = await api.delete(APIRouts.Logout, { headers: {
+      'Content-Type': 'application/json',
+      'X-Token': getToken()}});
+    return status;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
   }
