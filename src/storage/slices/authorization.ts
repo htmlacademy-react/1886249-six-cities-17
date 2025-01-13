@@ -18,7 +18,7 @@ const authorisationSlice = createSlice({
   reducers: {
     setAuthorisationStatus: (state, action: PayloadAction<AuthorisationStatus>) => {
       state.status = action.payload;
-    }
+    },
   },
   selectors: {
     selectAuthorisationStatus: (state) => state.status,
@@ -29,17 +29,14 @@ const authorisationSlice = createSlice({
         if (action.payload === 200) {
           state.status = AuthorisationStatus.Auth;
         }
-        console.log('checkAuthorisation checked');
       })
       .addCase(checkAuthorisation.pending, (_, action) => {
-
         console.log('checkAuthorisation pending', action);
       })
       .addCase(checkAuthorisation.rejected, (state,action) => {
         if (action.payload === 401) {
           state.status = AuthorisationStatus.NoAuth;
         }
-        console.log('checkAuthorisation rejected', action.payload);
       })
       .addCase(login.fulfilled, (state) => {
         state.status = AuthorisationStatus.Auth;

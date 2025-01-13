@@ -10,7 +10,6 @@ import { logout } from '@/thunk/authorisation';
 function Header() {
 
   const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
-  console.log('STATUS: ', authState);
 
   const dispatch = useAppDispatch();
 

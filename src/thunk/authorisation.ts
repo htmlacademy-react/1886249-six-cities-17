@@ -9,7 +9,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const checkAuthorisation = createAsyncThunk(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
   try {
     const {status} = await api.get(APIRouts.Authorisation);
-    console.log('checkAuthorisation STATUS');
     return status;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
