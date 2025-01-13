@@ -1,5 +1,3 @@
-
-import { useAppDispatch } from '@/hooks';
 import { APIRouts } from '@/libs/const';
 import { dropToken, getToken, saveToken } from '@/services/token';
 import { api } from '@/storage';
@@ -9,12 +7,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
 export const checkAuthorisation = createAsyncThunk(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
-  const dispatch = useAppDispatch();
+
   try {
     const result = await api.get(APIRouts.Authorisation);
     if (result.status === 200) {
-      //FIXME: не срабатывает setUser
-      dispatch(userAction.setUser(result.data)) ;
+      thunkApi.dispatch(userAction.setUser(result.data)) ;
     }
     return result;
   } catch (error) {

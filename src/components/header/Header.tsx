@@ -6,12 +6,15 @@ import { useSelector } from 'react-redux';
 import { authorisationSelectors } from '@/storage/slices/authorization';
 import { useAppDispatch } from '@/hooks';
 import { logout } from '@/thunk/authorisation';
+import { userSelector } from '@/storage/slices/user';
 
 function Header() {
 
   const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
 
   const dispatch = useAppDispatch();
+
+  const user = useSelector(userSelector.selectUser);
 
   return (
     <header className="header">
@@ -28,7 +31,7 @@ function Header() {
                     <Link to={AppRoutes.Favourites} className="header__nav-link header__nav-link--profile">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__user-name user__name">{user?.email}</span>
                       <span className="header__favorite-count">3</span>
                     </Link>
                   </li>
