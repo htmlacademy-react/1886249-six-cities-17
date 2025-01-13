@@ -4,25 +4,33 @@ import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import { AppRoutes, AuthorisationStatus} from '../libs/const';
+import { AppRoutes } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { offersSelectors } from '@/storage/slices/offers';
 import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
+import { authorisationSelectors } from '@/storage/slices/authorization';
+
+import { useAppDispatch } from '@/hooks';
+import { checkAuthorisation } from '@/thunk/authorisation';
 
 function App() {
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchOffers());
-  },[dispatch]);
+  const dispatch = useAppDispatch();
 
   const offers = useSelector(offersSelectors.selectOffers);
 
   const activeCity = useSelector(offersSelectors.selectActiveCity);
+
+  const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
+
+
+  useEffect(() => {
+    dispatch(fetchOffers());
+    dispatch(checkAuthorisation());
+  }, [dispatch]);
 
 
   return (
@@ -30,7 +38,7 @@ function App() {
       <Route path={AppRoutes.Main} element={<Layout />} >
         <Route index element={<MainPage activeCity={activeCity} offers={offers}/>} />
         <Route path={AppRoutes.Favourites} element={
-          <PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><FavouritesPage /></PrivateRoute>
+          <PrivateRoute authorisationStatus={authState}><FavouritesPage /></PrivateRoute>
         }
         />
         <Route path={AppRoutes.Offer} element={<OfferPage offers={offers} />} />

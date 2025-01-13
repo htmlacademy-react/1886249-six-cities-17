@@ -1,10 +1,10 @@
-import { sortOffers } from '@/helpers';
 import { CardType } from '../../../libs/const';
 import { OfferCardPrew } from '../../../libs/types/types';
 import OfferCard from '../offer-card-main/offer-card';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import {offersSelectors} from '@/storage/slices/offers';
+import { sortOffers } from '@/libs/helpers';
 
 type OfferListProps = {
   offers: OfferCardPrew[];
@@ -18,7 +18,7 @@ function OfferList({offers, onListItemHover, offerCardType}: OfferListProps) {
 
   return (
     <div className={clsx(`${offerCardType}__places-list places__list`, offerCardType === CardType.CitiesCard && 'tabs__content')}>
-      {sortedOffers.map((offer) => <OfferCard key={offer.id} offer={offer} onListItemHover={onListItemHover} offerCardType={offerCardType} />)}
+      {sortedOffers.map((offer: OfferCardPrew) => <OfferCard key={offer.id} offer={offer} onListItemHover={onListItemHover} offerCardType={offerCardType} />)}
     </div>
   );
 }

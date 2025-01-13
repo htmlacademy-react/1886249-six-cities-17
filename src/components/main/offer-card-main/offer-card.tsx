@@ -12,7 +12,7 @@ import type { OfferCardPrew } from '@/libs/types/types';
 
 type OfferCardProps = {
 	offer: OfferCardPrew;
-	onListItemHover: (listItemId: string | null) => void;
+	onListItemHover?: (listItemId: string | null) => void;
 	offerCardType: CardType;
 };
 

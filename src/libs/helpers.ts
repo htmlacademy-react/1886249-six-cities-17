@@ -1,5 +1,6 @@
-import { SortItem } from './libs/const';
-import { OfferCardPrew } from './libs/types/types';
+import { SortItem } from './const';
+import { OfferCardPrew } from './types/types';
+
 
 export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem) => {
   switch (currentSort) {
