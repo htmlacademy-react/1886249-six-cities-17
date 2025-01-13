@@ -2,7 +2,6 @@ import { AuthorisationStatus } from '@/libs/const';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
 import { checkAuthorisation, login, logout } from '@/thunk/authorisation';
-import { dropToken } from '@/services/token';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;
@@ -43,7 +42,6 @@ const authorisationSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.status = AuthorisationStatus.NoAuth;
-        dropToken();
       });
   },
 });

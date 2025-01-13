@@ -1,6 +1,6 @@
 
 import { APIRouts } from '@/libs/const';
-import { getToken, saveToken } from '@/services/token';
+import { dropToken, getToken, saveToken } from '@/services/token';
 import { api } from '@/storage';
 import { AUTH_SLICE_NAME } from '@/storage/slices/sliceNames';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -31,6 +31,7 @@ export const logout = createAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_, th
     const {status} = await api.delete(APIRouts.Logout, { headers: {
       'Content-Type': 'application/json',
       'X-Token': getToken()}});
+    dropToken();
     return status;
   } catch (error) {
     return thunkApi.rejectWithValue(error);

@@ -5,7 +5,8 @@ import { AuthorisationStatus } from '@/libs/const';
 
 const initialState = {
   status: AuthorisationStatus.Unknown,
-}
+  userData: {} //in process...
+};
 
 const userSlice = createSlice({
   name: USER_SLICE_NAME,
@@ -13,3 +14,5 @@ const userSlice = createSlice({
   reducers: {},
   selectors: {},
 });
+
+export default userSlice;
