@@ -32,8 +32,8 @@ function Header() {
                       <span className="header__favorite-count">3</span>
                     </Link>
                   </li>
-                  <li className="header__nav-item">
-                    <Link to={''} className="header__nav-link" onClick={()=> dispatch(logout)}>
+                  <li className="header__nav-item" onClick={() => dispatch(logout())}>
+                    <Link to={AppRoutes.Main} className="header__nav-link" >
                       <span className="header__signout">Sign out</span>
                     </Link>
                   </li>
