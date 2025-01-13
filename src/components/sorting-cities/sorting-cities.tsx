@@ -9,7 +9,11 @@ function SortingCities() {
   const currentSort = useSelector(offersSelectors.selectCurrentSort);
 
   const sortSpanRef = useRef<HTMLElement>(null);
+
   const [isSortMenuOpened, setSortMenuOpened] = useState(false);
+
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     const hideSortMenu = (evt: MouseEvent) => {
       if (evt.target instanceof HTMLElement && sortSpanRef.current && !sortSpanRef.current.contains(evt.target)) {
@@ -34,7 +38,7 @@ function SortingCities() {
       </span>
       {isSortMenuOpened ?
         <ul className="places__options places__options--custom places__options--opened">
-          {Object.values(SortItem).map((sortIem) => <li key={sortIem} className={currentSort === sortIem ? 'places__option places__option--active' : 'places__option'} tabIndex={0} onClick={useAppDispatch(offersActions.changeCurrentSort(sortIem))}>{sortIem}</li>)}
+          {Object.values(SortItem).map((sortIem) => <li key={sortIem} className={currentSort === sortIem ? 'places__option places__option--active' : 'places__option'} tabIndex={0} onClick={() => dispatch(offersActions.setCurrentSort(sortIem))}>{sortIem}</li>)}
         </ul> : null}
     </form>
   );

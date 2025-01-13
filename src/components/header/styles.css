@@ -1,0 +1,11 @@
+ul .header__nav-list .signout {
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+}
+
+.header__nav-item .user .signout {
+   margin: 0;
+   min-height: unset;
+}
+

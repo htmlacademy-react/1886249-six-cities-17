@@ -1,7 +1,7 @@
 import { AuthorisationStatus } from '@/libs/const';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
-import { checkAuthorisation } from '@/thunk/authorisation';
+import { checkAuthorisation, login } from '@/thunk/authorisation';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;
@@ -31,6 +31,22 @@ const authorisationSlice = createSlice({
         if (action.payload === 401) {
           state.status = AuthorisationStatus.NoAuth;
         }
+      })
+      .addCase(checkAuthorisation.rejected, (_,action) => {
+        //ЧТО ПИСАТЬ ЗДЕСЬ???????
+
+        // eslint-disable-next-line no-console
+        console.log('auth rejected', action.payload);
+      })
+      .addCase(checkAuthorisation.pending, (_, action) => {
+        //ЧТО ПИСАТЬ ЗДЕСЬ???????
+
+        // eslint-disable-next-line no-console
+        console.log('auth pending', action);
+      })
+      // ADDCASE почему-то не работает, поэтому использую addMatcher
+      .addMatcher(login.fulfilled, (state, action) => {
+        state.status = AuthorisationStatus.Auth;
       });
   },
 });

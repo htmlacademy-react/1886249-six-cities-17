@@ -10,7 +10,7 @@ export type OffersState = {
     offers: OfferCardPrew[];
     currentSort: SortItem;
     requestStatus : RequestStatus;
-    loadingError: unknown | Error | null ;
+    loadingError: Error | null ;
 }
 
 const initialState: OffersState = {
@@ -25,9 +25,6 @@ const offersSlice = createSlice({
   name: OFFERS_SLICE_NAME,
   initialState,
   reducers: {
-    // setOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
-    //   state.offers = action.payload;
-    // },
     setActiveCity: (state, action: PayloadAction<Cities>) => {
       state.activeCity = action.payload;
     },
