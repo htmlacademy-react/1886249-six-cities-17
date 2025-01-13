@@ -1,10 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FULL_OFFER_SLICE_NAME } from './sliceNames';
-import { offersFull } from '@/libs/mocks/offers-full';
+import { OfferCardPrew, OfferFull, Review } from '@/libs/types/types';
 
 
-const initialState = {
-  offer: offersFull,
+type OfferInitialState = {
+  offer: OfferFull | null,
+  reviews: Review[],
+  nearPlaces: OfferCardPrew[],
+}
+
+const initialState: OfferInitialState = {
+  offer: null,
+  reviews: [],
+  nearPlaces: []
 };
 
 
@@ -13,7 +21,11 @@ const offer = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(),
-  },
-  selectors: {}
+    builder
+    .addCase(getOffer.fulfilled, (state, action) => {
+
+    }),
+},
+  selectors: {
+  }
 })

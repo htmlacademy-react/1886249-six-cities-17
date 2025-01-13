@@ -2,6 +2,7 @@ import { AuthorisationStatus } from '@/libs/const';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
 import { checkAuthorisation, login, logout } from '@/thunk/authorisation';
+import { userAction } from './user';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;
@@ -25,7 +26,7 @@ const authorisationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(checkAuthorisation.fulfilled, (state, action) => {
-        if (action.payload === 200) {
+        if (action.payload.status === 200) {
           state.status = AuthorisationStatus.Auth;
         }
       })

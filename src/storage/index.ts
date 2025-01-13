@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import offersSlice from './slices/offers';
 import { createAPI } from '@/services/api';
 import authorisationSlice from './slices/authorization';
+import userSlice from './slices/user';
 
 export const api = createAPI();
 
@@ -9,6 +10,7 @@ const store = configureStore({
   reducer: {
     [offersSlice.name]: offersSlice.reducer,
     [authorisationSlice.name]: authorisationSlice.reducer,
+    [userSlice.name]: userSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
