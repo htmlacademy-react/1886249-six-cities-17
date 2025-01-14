@@ -1,4 +1,5 @@
 import { APIRouts } from '@/libs/const';
+import { User } from '@/libs/types/types';
 import { dropToken, getToken, saveToken } from '@/services/token';
 import { api } from '@/storage';
 import { AUTH_SLICE_NAME } from '@/storage/slices/sliceNames';
@@ -6,8 +7,7 @@ import { userAction } from '@/storage/slices/user';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
-export const checkAuthorisation = createAsyncThunk(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
-
+export const checkAuthorisation = createAsyncThunk<User, void>(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
   try {
     const result = await api.get(APIRouts.Authorisation);
     if (result.status === 200) {

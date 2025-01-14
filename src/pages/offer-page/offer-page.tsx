@@ -1,19 +1,32 @@
 import Offer from '@/components/offer/offer/Offer';
 import NearPlaces from '../../components/offer/near-places/near-places';
-import { useParams } from 'react-router-dom';
-import { offersFull } from '@/libs/mocks/offers-full';
 import { useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { offerFullSElectors } from '@/storage/slices/fullOffer';
+import { getOffer } from '@/thunk/fullOffer';
+
 
 type OfferPageProps = {
   offers: OfferCardPrew[];
 }
 
 function OfferPage({offers}: OfferPageProps) {
-  const {id} = useParams();
-  const trimmedId = id?.slice(1);
 
-  const currentOffer = offersFull.find((offer) => offer.id === trimmedId);
+  const dispatch = useAppDispatch();
+
+  const currentOfferID = useAppSelector(offerFullSElectors.selectFullOfferID);
+
+  console.log(currentOfferID); // id есть
+
+  dispatch(getOffer(currentOfferID));
+
+  const currentOffer = useAppSelector(offerFullSElectors.selectFullOffer); //selector не срабатывает
+
+  console.log(currentOffer); // здесь null
+
+
+  // const currentOffer = offersFull.find((offer) => offer.id === trimmedId);
 
   const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(0,4);
 

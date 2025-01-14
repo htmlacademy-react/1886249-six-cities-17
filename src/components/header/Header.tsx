@@ -2,19 +2,18 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 import { AppRoutes, AuthorisationStatus } from '../../libs/const';
 import Logo from '../logo/Logo';
-import { useSelector } from 'react-redux';
 import { authorisationSelectors } from '@/storage/slices/authorization';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { logout } from '@/thunk/authorisation';
 import { userSelector } from '@/storage/slices/user';
 
 function Header() {
 
-  const authState = useSelector(authorisationSelectors.selectAuthorisationStatus);
+  const authState = useAppSelector(authorisationSelectors.selectAuthorisationStatus);
 
   const dispatch = useAppDispatch();
 
-  const user = useSelector(userSelector.selectUser);
+  const user = useAppSelector(userSelector.selectUser);
 
   return (
     <header className="header">

@@ -6,8 +6,8 @@ import { Cities } from '@/libs/const';
 import { OfferCardPrew, RequestStatus } from '@/libs/types/types';
 import Spinner from '@/components/spinner/spinner';
 import MainEmpty from '../main-empty/main-empty';
-import { useSelector } from 'react-redux';
 import { offersSelectors } from '@/storage/slices/offers';
+import { useAppSelector } from '@/hooks';
 
 
 type MainPageProps = {
@@ -18,7 +18,7 @@ type MainPageProps = {
 export default function MainPage ({activeCity, offers}: MainPageProps): JSX.Element {
 
   const particularCityOffers = offers.filter((offer) => offer.city.name === activeCity.toString());
-  const isLoading = useSelector(offersSelectors.selectOffersRequestStatus);
+  const isLoading = useAppSelector(offersSelectors.selectOffersRequestStatus);
 
   const placesToStay = particularCityOffers.length;
 

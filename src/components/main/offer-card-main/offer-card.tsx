@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
+  AppRoutes,
   BookmarkOfferCard,
   CardType,
   ImgSettings,
@@ -9,6 +10,9 @@ import {
 import Rating from '../../offer/rating/rating';
 import AddToBookmarks from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
 import type { OfferCardPrew } from '@/libs/types/types';
+import { useAppDispatch } from '@/hooks';
+import { offerFullActions } from '@/storage/slices/fullOffer';
+import { getOffer } from '@/thunk/fullOffer';
 
 type OfferCardProps = {
 	offer: OfferCardPrew;
@@ -22,6 +26,18 @@ export default function OfferCard({
   offerCardType,
 }: OfferCardProps) {
   const { id, previewImage, isPremium, price, title } = offer;
+
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+  const cardPath = `${AppRoutes.Offers}/${id}`;
+  console.log(cardPath);
+
+  const handleCardClick = () => {
+    dispatch(offerFullActions.setFullOfferID(id));
+    dispatch(getOffer(id));
+    navigate(cardPath);
+  };
 
   return (
     <article
@@ -40,7 +56,7 @@ export default function OfferCard({
           'place-card__image-wrapper',
         )}
       >
-        <Link to={`offer/:${id}`}>
+        <div onClick={handleCardClick}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -56,7 +72,7 @@ export default function OfferCard({
             }
             alt="Place image"
           />
-        </Link>
+        </div>
       </div>
       <div
         className={`${CardType.FavoritesCard && 'favorites__card-info'} place-card__info`}
@@ -74,7 +90,7 @@ export default function OfferCard({
         </div>
         <Rating offerCardType={offerCardType} />
         <h2 className="place-card__name">
-          <Link to={`offer/:${id}`}>{title}</Link>
+          <Link to={`offers/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
