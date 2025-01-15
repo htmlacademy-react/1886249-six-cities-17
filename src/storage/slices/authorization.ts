@@ -2,14 +2,16 @@ import { AuthorisationStatus } from '@/libs/const';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
 import { checkAuthorisation, login, logout } from '@/thunk/authorisation';
-import { userAction } from './user';
+import { RequestStatus } from '@/libs/types/types';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;
+  requestStatus: RequestStatus;
 }
 
 const initialState: AuthorisationStatusState = {
   status: AuthorisationStatus.Unknown,
+  requestStatus: RequestStatus.Idle,
 };
 
 const authorisationSlice = createSlice({
@@ -30,8 +32,8 @@ const authorisationSlice = createSlice({
           state.status = AuthorisationStatus.Auth;
         }
       })
-      .addCase(checkAuthorisation.pending, (_, action) => {
-        console.log('checkAuthorisation pending', action);
+      .addCase(checkAuthorisation.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       })
       .addCase(checkAuthorisation.rejected, (state,action) => {
         if (action.payload === 401) {

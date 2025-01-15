@@ -30,11 +30,15 @@ function Header() {
                     <Link to={AppRoutes.Favourites} className="header__nav-link header__nav-link--profile">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
+                      {/* FIXME почта юзера отрисовывается не сразу */}
                       <span className="header__user-name user__name">{user?.email}</span>
                       <span className="header__favorite-count">3</span>
                     </Link>
                   </li>
-                  <li className="header__nav-item" onClick={() => dispatch(logout())}>
+                  <li className="header__nav-item" onClick={() => {
+                    dispatch(logout());
+                  }}
+                  >
                     <Link to={AppRoutes.Main} className="header__nav-link" >
                       <span className="header__signout">Sign out</span>
                     </Link>

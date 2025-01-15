@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
-import { getOffer } from '@/thunk/fullOffer';
+import { getNearPlaces, getOffer } from '@/thunk/fullOffer';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -22,6 +22,7 @@ function OfferPage({offers}: OfferPageProps) {
   useEffect(() => {
     if (id) {
       dispatch(getOffer(id));
+      dispatch(getNearPlaces(id));
     }
   }, [id, dispatch]);
 
@@ -29,13 +30,11 @@ function OfferPage({offers}: OfferPageProps) {
 
   const currentOffer = useSelector(offerFullSElectors.selectFullOffer);
 
+  const nearOffers = useAppSelector(offerFullSElectors.selectNearPlaces).slice(0,4);
+
   if (!currentOffer) {
     return null;
   }
-
-
-  const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(0,4);
-
 
   const handleListItemHover = (listItemID: string| null) => {
     const currentPoint = offers.find((offer) => offer.id === listItemID);

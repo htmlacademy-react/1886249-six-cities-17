@@ -1,4 +1,4 @@
-import { AppRoutes, Cities } from '@/libs/const';
+import { Cities } from '@/libs/const';
 import type { AppDispatch } from '@/storage';
 import { offersActions } from '@/storage/slices/offers';
 import { useDispatch } from 'react-redux';
