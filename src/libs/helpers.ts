@@ -2,7 +2,7 @@ import { SortItem } from './const';
 import { OfferCardPrew } from './types/types';
 
 
-export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem) => {
+export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem):OfferCardPrew[]  => {
   switch (currentSort) {
     case SortItem.PriceHigh:
       return offers.sort((a,b) => b.price - a.price);
@@ -14,6 +14,7 @@ export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem) => {
       return offers;
   }
 };
+
 
 export const mapOffers = (offers: OfferCardPrew[]) => offers.map((item) => ({
   location: item.location,
@@ -34,5 +35,4 @@ export const formatDate = (isoDate: string): string => {
   const formattedDate = dateFormatter.format(date);
   return formattedDate;
 };
-
 

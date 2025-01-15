@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import { ReviewLength } from '@/libs/const';
 import { ReviewToSend } from '@/libs/types/types';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
 import { sendReview } from '@/thunk/fullOffer';
@@ -74,10 +75,10 @@ function ReviewForm() {
           </svg>
         </label>
       </div>
-      <textarea className="reviews__textarea form__textarea" name="review" minLength={50} value={reviewText} id="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={handleTextChange}/>
+      <textarea className="reviews__textarea form__textarea" name="review" minLength={ReviewLength.Min} maxLength={ReviewLength.Max} value={reviewText} id="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={handleTextChange}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={isDisable}>Submit</button>
       </div>

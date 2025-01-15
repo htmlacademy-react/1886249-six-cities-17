@@ -84,3 +84,8 @@ export enum APIRouts {
   Logout = '/logout',
   Reviews = '/comments'
 }
+
+export enum ReviewLength {
+  Max = 300,
+  Min = 50,
+}
