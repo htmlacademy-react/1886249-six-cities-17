@@ -8,9 +8,8 @@ type ReviewsListProps = {
 function ReviewsList({reviews}: ReviewsListProps) {
   return (
     <ul className="reviews__list">
-      {reviews.slice()
-        .sort((a, b) => new Date(a.date) - new Date(b.date))
-        .slice(0, 10)
+      {reviews.slice(0,10)
+        .sort((reviewA, reviewB) => new Date(reviewA.date) - new Date(reviewB.date))
         .map((review) => <ReviewItem review={review} key={review.id}/>)}
     </ul>
   );

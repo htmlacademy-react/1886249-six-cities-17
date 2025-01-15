@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
-import { getNearPlaces, getOffer } from '@/thunk/fullOffer';
+import { getNearPlaces, getOffer, getReviews } from '@/thunk/fullOffer';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -23,6 +23,7 @@ function OfferPage({offers}: OfferPageProps) {
     if (id) {
       dispatch(getOffer(id));
       dispatch(getNearPlaces(id));
+      dispatch(getReviews(id));
     }
   }, [id, dispatch]);
 

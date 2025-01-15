@@ -82,4 +82,5 @@ export enum APIRouts {
   Offers = '/offers',
   Authorisation = '/login',
   Logout = '/logout',
+  Reviews = '/comments'
 }

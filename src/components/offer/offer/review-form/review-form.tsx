@@ -1,6 +1,15 @@
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { offerFullSElectors } from '@/storage/slices/fullOffer';
+import { sendReview } from '@/thunk/fullOffer';
 import { ChangeEvent, useState } from 'react';
 
 function ReviewForm() {
+
+  const dispatch = useAppDispatch();
+
+  const currentOffer = useAppSelector(offerFullSElectors.selectFullOffer);
+
+
   const [reviewText, setReviewText] = useState('');
   const handleTextChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(evt.target.value);
@@ -9,6 +18,7 @@ function ReviewForm() {
   const handleSubmitForm = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setReviewText('');
+    dispatch(sendReview(currentOffer.id));
   };
   return (
     <form onSubmit={handleSubmitForm} className="reviews__form form" action="#" method="post">
@@ -45,12 +55,12 @@ function ReviewForm() {
           </svg>
         </label>
       </div>
-      <textarea className="reviews__textarea form__textarea" name="review" value={reviewText} id="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={handleTextChange}/>
+      <textarea className="reviews__textarea form__textarea" name="review" minLength={50} value={reviewText} id="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={handleTextChange}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit">Submit</button>
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FULL_OFFER_SLICE_NAME } from './sliceNames';
 import { OfferCardPrew, OfferFull, RequestStatus, Review } from '@/libs/types/types';
-import { getNearPlaces, getOffer } from '@/thunk/fullOffer';
+import { getNearPlaces, getOffer, getReviews, sendReview } from '@/thunk/fullOffer';
 
 
 type OfferInitialState = {
@@ -45,12 +45,32 @@ const offerFullSlice = createSlice({
       })
       .addCase(getNearPlaces.rejected, (state) => {
         state.requestStatus = RequestStatus.Success;
+      })
+      .addCase(getReviews.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
+      })
+      .addCase(getReviews.fulfilled, (state, action) => {
+        state.requestStatus = RequestStatus.Success;
+        state.reviews = action.payload;
+      })
+      .addCase(getReviews.rejected, (state) => {
+        state.requestStatus = RequestStatus.Success;
+      })
+      .addCase(sendReview.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
+      })
+      .addCase(sendReview.fulfilled, (state) => {
+        state.requestStatus = RequestStatus.Success;
+      })
+      .addCase(sendReview.rejected, (state) => {
+        state.requestStatus = RequestStatus.Success;
       });
   },
   selectors: {
     selectFullOffer: (state) => state.offer,
     selectRequestStatus: (state) => state.requestStatus,
     selectNearPlaces: (state) => state.nearPlaces,
+    selectReviews: (state) => state.reviews,
   }
 });
 
