@@ -1,5 +1,5 @@
 import { APIRouts } from '@/libs/const';
-import { OfferCardPrew, OfferFull, Review } from '@/libs/types/types';
+import { OfferCardPrew, OfferFull, Review, ReviewToSend } from '@/libs/types/types';
 import { api } from '@/storage';
 import { FULL_OFFER_SLICE_NAME } from '@/storage/slices/sliceNames';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -32,9 +32,9 @@ export const getReviews = createAsyncThunk<Review[], string>(`${FULL_OFFER_SLICE
   }
 });
 
-export const sendReview = createAsyncThunk<Review, string>(`${FULL_OFFER_SLICE_NAME}/sendReview`, async (id, thunkApi) => {
+export const sendReview = createAsyncThunk<Review | Error, {id: string; review: ReviewToSend}>(`${FULL_OFFER_SLICE_NAME}/sendReview`, async ({id, review}, thunkApi) => {
   try {
-    const result = await api.post(`${APIRouts.Reviews}/${id}`);
+    const result = await api.post(`${APIRouts.Reviews}/${id}`, review);
     return result.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);

@@ -54,11 +54,14 @@ export type Review = {
   rating: 4;
 }
 
+export type ReviewToSend = {
+    comment: string;
+    rating: number;
+  }
+
 export enum RequestStatus {
   Idle = 'Idle',
   Loading = 'Loading',
   Success = 'Success',
   Failed = 'Failed'
 }
-
-

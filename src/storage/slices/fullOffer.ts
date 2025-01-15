@@ -9,6 +9,8 @@ type OfferInitialState = {
   reviews: Review[];
   nearPlaces: OfferCardPrew[];
   requestStatus: RequestStatus;
+  isError: boolean;
+  isFormDisabled: boolean;
 }
 
 const initialState: OfferInitialState = {
@@ -16,6 +18,8 @@ const initialState: OfferInitialState = {
   reviews: [],
   nearPlaces: [],
   requestStatus: RequestStatus.Idle,
+  isError: false,
+  isFormDisabled: false,
 };
 
 
@@ -58,12 +62,19 @@ const offerFullSlice = createSlice({
       })
       .addCase(sendReview.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;
+        state.isFormDisabled = true;
       })
       .addCase(sendReview.fulfilled, (state) => {
         state.requestStatus = RequestStatus.Success;
+        state.isFormDisabled = false;
       })
-      .addCase(sendReview.rejected, (state) => {
-        state.requestStatus = RequestStatus.Success;
+      .addCase(sendReview.rejected, (state, action) => {
+        state.requestStatus = RequestStatus.Failed;
+        state.isFormDisabled = false;
+        if (action.error.code === 404) {
+          state.isError = true;
+        }
+
       });
   },
   selectors: {
@@ -71,6 +82,8 @@ const offerFullSlice = createSlice({
     selectRequestStatus: (state) => state.requestStatus,
     selectNearPlaces: (state) => state.nearPlaces,
     selectReviews: (state) => state.reviews,
+    selectIsError: (state) => state.isError,
+    selectIsFormDisabled: (state) => state.isFormDisabled,
   }
 });
 
