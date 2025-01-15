@@ -8,7 +8,6 @@ type OfferInitialState = {
   offer: OfferFull | null;
   reviews: Review[];
   nearPlaces: OfferCardPrew[];
-  currentOfferID: string;
   requestStatus: RequestStatus;
 }
 
@@ -16,7 +15,6 @@ const initialState: OfferInitialState = {
   offer: null,
   reviews: [],
   nearPlaces: [],
-  currentOfferID: '',
   requestStatus: RequestStatus.Idle,
 };
 
@@ -25,9 +23,6 @@ const offerFullSlice = createSlice({
   name: FULL_OFFER_SLICE_NAME,
   initialState,
   reducers: {
-    setFullOfferID: (state, action: PayloadAction<string>) => {
-      state.currentOfferID = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,7 +31,7 @@ const offerFullSlice = createSlice({
       })
       .addCase(getOffer.fulfilled, (state, action: PayloadAction<OfferFull>) => {
         state.offer = action.payload;
-        console.log(state.offer);
+        console.log(state.offer); // есть оффер
         state.requestStatus = RequestStatus.Success;
       })
       .addCase(getOffer.rejected, (state) => {
@@ -45,7 +40,6 @@ const offerFullSlice = createSlice({
   },
   selectors: {
     selectFullOffer: (state) => state.offer,
-    selectFullOfferID: (state) => state.currentOfferID
   }
 });
 

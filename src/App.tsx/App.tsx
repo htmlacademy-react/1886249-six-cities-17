@@ -35,7 +35,8 @@ function App() {
   return (
     <Routes>
       <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index element={<MainPage activeCity={activeCity} offers={offers}/>} />
+        <Route index path={`${AppRoutes.Main}`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
+        <Route index path={`${AppRoutes.Main}:city`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
         <Route path={AppRoutes.Favourites} element={
           <PrivateRoute authorisationStatus={authState}><FavouritesPage /></PrivateRoute>
         }

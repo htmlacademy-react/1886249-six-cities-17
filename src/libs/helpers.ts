@@ -27,3 +27,12 @@ export const mapOffers = (offers: OfferCardPrew[]) => offers.map((item) => ({
   city: item.city,
   previewImage: item.previewImage
 }));
+
+export const formatDate = (isoDate: string): string => {
+  const date = new Date(isoDate);
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric'});
+  const formattedDate = dateFormatter.format(date);
+  return formattedDate;
+};
+
+

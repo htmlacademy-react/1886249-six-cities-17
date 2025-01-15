@@ -9,7 +9,7 @@ import { OfferCardPrew, OfferCity } from '@/libs/types/types';
 
 type MapProps = {
   mapType: MapType;
-  selectedOffer: OfferCardPrew | undefined;
+  selectedOffer: OfferCardPrew | null;
   city: OfferCity;
   offers: OfferCardPrew[];
 }
@@ -37,7 +37,7 @@ function MapComponent({mapType, city, offers, selectedOffer}: MapProps) {
         });
         marker
           .setIcon(
-            selectedOffer !== undefined && offer.id === selectedOffer.id
+            selectedOffer && offer.id === selectedOffer.id
               ? currentCustomIcon
               : defaultCustomIcon
           )

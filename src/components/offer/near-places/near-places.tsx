@@ -12,7 +12,6 @@ function NearPlaces({offers, onListItemHover}: NearPlacesProps) {
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
-      {/* FIXME: ЛИСТ  ДОЛЖЕН БЫТЬ ROW А НЕ COLUMN */}
       <OfferList offers={offers} offerCardType={CardType.NearCard} onListItemHover={onListItemHover}/>
     </section>
   );

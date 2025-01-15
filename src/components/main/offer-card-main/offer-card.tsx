@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
-  AppRoutes,
   BookmarkOfferCard,
   CardType,
   ImgSettings,
@@ -10,9 +9,6 @@ import {
 import Rating from '../../offer/rating/rating';
 import AddToBookmarks from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
 import type { OfferCardPrew } from '@/libs/types/types';
-import { useAppDispatch } from '@/hooks';
-import { offerFullActions } from '@/storage/slices/fullOffer';
-import { getOffer } from '@/thunk/fullOffer';
 
 type OfferCardProps = {
 	offer: OfferCardPrew;
@@ -26,18 +22,6 @@ export default function OfferCard({
   offerCardType,
 }: OfferCardProps) {
   const { id, previewImage, isPremium, price, title } = offer;
-
-  const dispatch = useAppDispatch();
-
-  const navigate = useNavigate();
-  const cardPath = `${AppRoutes.Offers}/${id}`;
-  console.log(cardPath);
-
-  const handleCardClick = () => {
-    dispatch(offerFullActions.setFullOfferID(id));
-    dispatch(getOffer(id));
-    navigate(cardPath);
-  };
 
   return (
     <article
@@ -56,10 +40,11 @@ export default function OfferCard({
           'place-card__image-wrapper',
         )}
       >
-        <div onClick={handleCardClick}>
+        <Link to={`offers/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
+            //TODO написать ф-цию для width / height c переданным cardType, кот возвращает объект с полями width и height и деструктурировать его
             width={
               offerCardType === CardType.FavoritesCard
                 ? ImgSettings.FavouriteCardWidth
@@ -72,7 +57,7 @@ export default function OfferCard({
             }
             alt="Place image"
           />
-        </div>
+        </Link>
       </div>
       <div
         className={`${CardType.FavoritesCard && 'favorites__card-info'} place-card__info`}

@@ -1,10 +1,12 @@
 import Offer from '@/components/offer/offer/Offer';
 import NearPlaces from '../../components/offer/near-places/near-places';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
 import { getOffer } from '@/thunk/fullOffer';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 type OfferPageProps = {
@@ -15,22 +17,25 @@ function OfferPage({offers}: OfferPageProps) {
 
   const dispatch = useAppDispatch();
 
-  const currentOfferID = useAppSelector(offerFullSElectors.selectFullOfferID);
+  const {id} = useParams();
 
-  console.log(currentOfferID); // id есть
+  useEffect(() => {
+    if (id) {
+      dispatch(getOffer(id));
+    }
+  }, [id, dispatch]);
 
-  dispatch(getOffer(currentOfferID));
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
 
-  const currentOffer = useAppSelector(offerFullSElectors.selectFullOffer); //selector не срабатывает
+  const currentOffer = useSelector(offerFullSElectors.selectFullOffer);
 
-  console.log(currentOffer); // здесь null
+  if (!currentOffer) {
+    return null;
+  }
 
-
-  // const currentOffer = offersFull.find((offer) => offer.id === trimmedId);
 
   const nearOffers = offers.filter((offer) => currentOffer?.city.name === offer.city.name && offer.id !== currentOffer.id).slice(0,4);
 
-  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(undefined);
 
   const handleListItemHover = (listItemID: string| null) => {
     const currentPoint = offers.find((offer) => offer.id === listItemID);

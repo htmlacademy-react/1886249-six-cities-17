@@ -30,15 +30,23 @@ export default function MainPage ({activeCity, offers}: MainPageProps): JSX.Elem
 
   const safeCityForOffers = cityForOffers !== undefined ? cityForOffers : DEFAULT_CITY;
 
+  const getMainContent = () => {
+    if (offers.length && isLoading === RequestStatus.Success){
+      return <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/>;
+    } else if (isLoading === RequestStatus.Loading){
+      return <Spinner />;
+    } else if (isLoading === RequestStatus.Success && !offers.length) {
+      return <MainEmpty activeCity={activeCity}/>;
+    } else if (isLoading === RequestStatus.Failed) {
+      return <p className='fail-message'>Oooooops... something went wrong, try one more time</p>;
+    }
+  };
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <MainCitiesLocations activeCity={activeCity} />
-      {offers.length > 0 && (isLoading === RequestStatus.Success
-        ? <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/>
-        : <Spinner />)}
-      {isLoading === RequestStatus.Success && !offers.length && <MainEmpty activeCity={activeCity}/>}
-      {isLoading === RequestStatus.Failed && <p className='fail-message'>Oooooops... something went wrong, try one more time</p>}
+      {getMainContent()}
     </main>
   );
 }

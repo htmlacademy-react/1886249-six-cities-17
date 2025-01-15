@@ -6,11 +6,11 @@ import { fetchOffers } from '@/thunk/offers';
 
 
 export type OffersState = {
-    activeCity: Cities;
-    offers: OfferCardPrew[];
-    currentSort: SortItem;
-    requestStatus : RequestStatus;
-    loadingError: Error | null ;
+  activeCity: Cities;
+  offers: OfferCardPrew[];
+  currentSort: SortItem;
+  requestStatus : RequestStatus;
+  loadingError: Error | null ;
 }
 
 const initialState: OffersState = {
