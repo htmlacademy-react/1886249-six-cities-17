@@ -3,7 +3,7 @@ import { ReviewLength } from '@/libs/const';
 import { ReviewToSend } from '@/libs/types/types';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
 import { sendReview } from '@/thunk/fullOffer';
-import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 function ReviewForm() {
 
@@ -23,7 +23,6 @@ function ReviewForm() {
 
   const handleSubmitForm = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const review: ReviewToSend = {
       comment: reviewText,
       rating: rate,
@@ -35,8 +34,9 @@ function ReviewForm() {
     }
   };
 
-  const handleStarClick = (e: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
-    rate = Number(e.target.defaultValue);
+  const handleStarClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    rate = Number(target.defaultValue);
   };
 
   return (
