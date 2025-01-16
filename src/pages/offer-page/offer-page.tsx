@@ -31,7 +31,7 @@ function OfferPage({offers}: OfferPageProps) {
 
   const currentOffer = useSelector(offerFullSElectors.selectFullOffer);
 
-  const nearOffers = useAppSelector(offerFullSElectors.selectNearPlaces).slice(0,4);
+  const nearOffers = useAppSelector(offerFullSElectors.selectNearPlaces).slice(0,3);
 
   if (!currentOffer) {
     return null;

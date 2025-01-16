@@ -82,7 +82,6 @@ const offerFullSlice = createSlice({
         if (action.error.code === 404) {
           state.isPostReviewError = true;
         }
-
       });
   },
   selectors: {

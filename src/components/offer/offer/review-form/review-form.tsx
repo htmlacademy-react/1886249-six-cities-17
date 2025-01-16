@@ -35,7 +35,6 @@ function ReviewForm() {
     }
   };
 
-
   const handleStarClick = (e: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
     rate = Number(e.target.defaultValue);
   };

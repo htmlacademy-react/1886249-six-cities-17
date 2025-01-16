@@ -13,6 +13,7 @@ type OfferProps = {
 
 function Offer({nearOffers, currentOffer, selectedPoint}: OfferProps) {
 
+
   const cityForOffers: OfferCity = CITIES_LOCATIONS.find((city) => city.name === currentOffer.city.name);
 
   return (

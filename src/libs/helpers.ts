@@ -1,8 +1,8 @@
 import { SortItem } from './const';
-import { OfferCardPrew } from './types/types';
+import { OfferCardPrew, Review } from './types/types';
 
 
-export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem):OfferCardPrew[]  => {
+export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem):OfferCardPrew[] => {
   switch (currentSort) {
     case SortItem.PriceHigh:
       return offers.sort((a,b) => b.price - a.price);
@@ -35,4 +35,7 @@ export const formatDate = (isoDate: string): string => {
   const formattedDate = dateFormatter.format(date);
   return formattedDate;
 };
+
+export const formatReviewList = (reviewList: Review[]) => reviewList.slice(0,10)
+  .sort((reviewA, reviewB) => new Date(reviewB.date).getTime() - new Date(reviewA.date).getTime());
 

@@ -7,7 +7,7 @@ import { userAction } from '@/storage/slices/user';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
-export const checkAuthorisation = createAsyncThunk<number | User, string>(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
+export const checkAuthorisation = createAsyncThunk<number | User, string>(`${AUTH_SLICE_NAME}/checkAuth`, async ({}, thunkApi) => {
   try {
     const result = await api.get(APIRouts.Authorisation);
     if (result.status === 200) {
