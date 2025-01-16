@@ -1,8 +1,7 @@
-import { AuthorisationStatus } from '@/libs/const';
+import { AuthorisationStatus, RequestStatus } from '@/libs/const';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { AUTH_SLICE_NAME } from './sliceNames';
 import { checkAuthorisation, login, logout } from '@/thunk/authorisation';
-import { RequestStatus } from '@/libs/types/types';
 
 export type AuthorisationStatusState = {
   status: AuthorisationStatus;

@@ -89,3 +89,20 @@ export enum ReviewLength {
   Max = 300,
   Min = 50,
 }
+
+export enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+}
+
+export const RateValues: {[index: string]: string } = {
+  '1': 'terribly',
+  '2': 'badly',
+  '3': 'not bad',
+  '4': 'good',
+  '5': 'perfect',
+};
+
+

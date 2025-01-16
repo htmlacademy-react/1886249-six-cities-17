@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FULL_OFFER_SLICE_NAME } from './sliceNames';
-import { OfferCardPrew, OfferFull, RequestStatus, Review } from '@/libs/types/types';
+import { OfferCardPrew, OfferFull, Review } from '@/libs/types/types';
 import { getNearPlaces, getOffer, getReviews, sendReview } from '@/thunk/fullOffer';
+import { RequestStatus } from '@/libs/const';
 
 type OfferInitialState = {
   offer: OfferFull | null;
@@ -92,6 +93,7 @@ const offerFullSlice = createSlice({
     selectReviews: (state) => state.reviews,
     selectIsOfferError: (state) => state.isOfferError,
     selectIsFormDisabled: (state) => state.isFormDisabled,
+    selectPostReviewRequestStatus: (state) => state.PostReviewRequestStatus,
   }
 });
 

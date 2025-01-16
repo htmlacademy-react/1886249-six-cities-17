@@ -59,14 +59,8 @@ export type ReviewToSend = {
     rating: number;
   }
 
-export enum RequestStatus {
-  Idle = 'Idle',
-  Loading = 'Loading',
-  Success = 'Success',
-  Failed = 'Failed'
-}
-
 export type LoginData = {
   email: string;
   password: string;
 }
+
