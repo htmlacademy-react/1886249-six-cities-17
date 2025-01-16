@@ -27,10 +27,8 @@ const authorisationSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(checkAuthorisation.fulfilled, (state, action) => {
-        if (action.payload.status === 200) {
-          state.status = AuthorisationStatus.Auth;
-        }
+      .addCase(checkAuthorisation.fulfilled, (state) => {
+        state.status = AuthorisationStatus.Auth;
       })
       .addCase(checkAuthorisation.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;

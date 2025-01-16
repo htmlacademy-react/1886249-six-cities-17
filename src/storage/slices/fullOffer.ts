@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FULL_OFFER_SLICE_NAME } from './sliceNames';
 import { OfferCardPrew, OfferFull, RequestStatus, Review } from '@/libs/types/types';
 import { getNearPlaces, getOffer, getReviews, sendReview } from '@/thunk/fullOffer';
+import { reviews } from '@/libs/mocks/reviews';
 
 
 type OfferInitialState = {
@@ -35,6 +36,9 @@ const offerFullSlice = createSlice({
   name: FULL_OFFER_SLICE_NAME,
   initialState,
   reducers: {
+    setReviewList: (state, action: PayloadAction<Review[]>) => {
+      state.reviews = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -72,16 +76,15 @@ const offerFullSlice = createSlice({
         state.PostReviewRequestStatus = RequestStatus.Loading;
         state.isFormDisabled = true;
       })
-      .addCase(sendReview.fulfilled, (state) => {
+      .addCase(sendReview.fulfilled, (state, action: PayloadAction<Review>) => {
         state.PostReviewRequestStatus = RequestStatus.Success;
         state.isFormDisabled = false;
+        state.reviews.push(action.payload);
       })
-      .addCase(sendReview.rejected, (state, action) => {
+      .addCase(sendReview.rejected, (state) => {
         state.PostReviewRequestStatus = RequestStatus.Failed;
         state.isFormDisabled = false;
-        if (action.error.code === 404) {
-          state.isPostReviewError = true;
-        }
+        state.isPostReviewError = true;
       });
   },
   selectors: {

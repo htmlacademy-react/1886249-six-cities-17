@@ -11,7 +11,6 @@ import { offersSelectors } from '@/storage/slices/offers';
 import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 import { authorisationSelectors } from '@/storage/slices/authorization';
-
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
 

@@ -7,7 +7,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getOffer = createAsyncThunk<OfferFull, string>(`${FULL_OFFER_SLICE_NAME}/getFullOffer`, async (id, thunkApi) => {
   try {
-    const result = await api.get(`${APIRouts.Offers}/${id}`);
+    const result = await api.get<OfferFull>(`${APIRouts.Offers}/${id}`);
     return result.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
@@ -16,7 +16,7 @@ export const getOffer = createAsyncThunk<OfferFull, string>(`${FULL_OFFER_SLICE_
 
 export const getNearPlaces = createAsyncThunk<OfferCardPrew[], string>(`${FULL_OFFER_SLICE_NAME}/getNearPlaces`, async (id, thunkApi) => {
   try {
-    const result = await api.get(`${APIRouts.Offers}/${id}/nearby`);
+    const result = await api.get<OfferCardPrew[]>(`${APIRouts.Offers}/${id}/nearby`);
     return result.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
@@ -25,16 +25,16 @@ export const getNearPlaces = createAsyncThunk<OfferCardPrew[], string>(`${FULL_O
 
 export const getReviews = createAsyncThunk<Review[], string>(`${FULL_OFFER_SLICE_NAME}/getReviews`, async (id, thunkApi) => {
   try {
-    const result = await api.get(`${APIRouts.Reviews}/${id}`);
+    const result = await api.get<Review[]>(`${APIRouts.Reviews}/${id}`);
     return result.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
   }
 });
 
-export const sendReview = createAsyncThunk<Review | Error, {id: string; review: ReviewToSend}>(`${FULL_OFFER_SLICE_NAME}/sendReview`, async ({id, review}, thunkApi) => {
+export const sendReview = createAsyncThunk<Review, {id: string; review: ReviewToSend}>(`${FULL_OFFER_SLICE_NAME}/sendReview`, async ({id, review}, thunkApi) => {
   try {
-    const result = await api.post(`${APIRouts.Reviews}/${id}`, review);
+    const result = await api.post<Review>(`${APIRouts.Reviews}/${id}`, review);
     return result.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
