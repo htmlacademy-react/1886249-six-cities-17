@@ -65,3 +65,8 @@ export enum RequestStatus {
   Success = 'Success',
   Failed = 'Failed'
 }
+
+export type LoginData = {
+  email: string;
+  password: string;
+}
