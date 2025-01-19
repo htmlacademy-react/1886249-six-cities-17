@@ -5,7 +5,7 @@ import { OfferCardPrew } from '@/libs/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { offerFullSElectors } from '@/storage/slices/fullOffer';
 import { getNearPlaces, getOffer, getReviews } from '@/thunk/fullOffer';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
@@ -15,9 +15,15 @@ type OfferPageProps = {
 
 function OfferPage({offers}: OfferPageProps) {
 
+
   const dispatch = useAppDispatch();
 
   const {id} = useParams();
+
+  const location = useLocation();
+  useEffect(() => {
+    scrollTo(top);
+  },[location.pathname]);
 
   useEffect(() => {
     if (id) {

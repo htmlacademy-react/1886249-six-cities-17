@@ -40,7 +40,7 @@ export default function OfferCard({
           'place-card__image-wrapper',
         )}
       >
-        <Link to={`offers/${id}`}>
+        <Link to={`/offers/${id}`} >
           <img
             className="place-card__image"
             src={previewImage}
