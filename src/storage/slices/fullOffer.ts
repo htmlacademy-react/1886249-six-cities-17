@@ -13,7 +13,6 @@ type OfferInitialState = {
   reviewsRequestStatus: RequestStatus;
   PostReviewRequestStatus: RequestStatus;
   isOfferError: boolean;
-  isPostReviewError: boolean;
   isFormDisabled: boolean;
 }
 
@@ -26,7 +25,6 @@ const initialState: OfferInitialState = {
   reviewsRequestStatus: RequestStatus.Idle,
   PostReviewRequestStatus: RequestStatus.Idle,
   isOfferError: false,
-  isPostReviewError: false,
   isFormDisabled: false,
 };
 
@@ -83,7 +81,6 @@ const offerFullSlice = createSlice({
       .addCase(sendReview.rejected, (state) => {
         state.PostReviewRequestStatus = RequestStatus.Failed;
         state.isFormDisabled = false;
-        state.isPostReviewError = true;
       });
   },
   selectors: {

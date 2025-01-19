@@ -1,3 +1,4 @@
+import './review-form.css';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { RateValues, RequestStatus, ReviewLength } from '@/libs/const';
 import { ReviewToSend } from '@/libs/types/types';
@@ -19,6 +20,7 @@ function ReviewForm() {
 
   const [reviewText, setReviewText] = useState('');
 
+
   const handleTextChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(evt.target.value);
   };
@@ -26,7 +28,9 @@ function ReviewForm() {
   let rate = 0;
 
   const handleSubmitForm = (e: ChangeEvent<HTMLFormElement>) => {
+
     e.preventDefault();
+
     const review: ReviewToSend = {
       comment: reviewText,
       rating: rate,
@@ -54,6 +58,7 @@ function ReviewForm() {
         {Object.entries(RateValues).map(([rating, title]) => <ReviewRate key={title} isDisable={isDisable} handleStarClick={handleStarClick} defaultValue={Number(rating)} valueDescription={title}/>)}
       </div>
       <textarea className="reviews__textarea form__textarea" name="review" minLength={ReviewLength.Min} maxLength={ReviewLength.Max} value={reviewText} id="review" placeholder="Tell how was your stay, what you like and what can be improved" required onChange={handleTextChange}/>
+      {postStatus === RequestStatus.Failed && <p className='reviews__error'>Sorry, an error occured. Try one more time.</p>}
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
