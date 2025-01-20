@@ -1,16 +1,16 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { OFFERS_SLICE_NAME } from './sliceNames';
-import { Cities, SortItem } from '@/libs/const';
-import { OfferCardPrew, RequestStatus } from '@/libs/types/types';
+import { Cities, RequestStatus, SortItem } from '@/libs/const';
+import { OfferCardPrew } from '@/libs/types/types';
 import { fetchOffers } from '@/thunk/offers';
 
 
 export type OffersState = {
-    activeCity: Cities;
-    offers: OfferCardPrew[];
-    currentSort: SortItem;
-    requestStatus : RequestStatus;
-    loadingError: Error | null ;
+  activeCity: Cities;
+  offers: OfferCardPrew[];
+  currentSort: SortItem;
+  requestStatus : RequestStatus;
+  loadingError: Error | null ;
 }
 
 const initialState: OffersState = {

@@ -15,15 +15,16 @@ type MainCitiesContainerProps = {
 
 function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCitiesContainerProps) {
 
-  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(
-    undefined
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | null>(
+    null
   );
 
   const handleListItemHover = (listItemId: string | null) => {
     const currentPoint = offers.find((offer) => offer.id === listItemId);
-    setSelectedPoint(currentPoint);
+    if (currentPoint) {
+      return setSelectedPoint(currentPoint);
+    }
   };
-
 
   return (
     <div className="cities">

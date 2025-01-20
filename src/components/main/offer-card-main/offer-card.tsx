@@ -40,10 +40,11 @@ export default function OfferCard({
           'place-card__image-wrapper',
         )}
       >
-        <Link to={`offer/:${id}`}>
+        <Link to={`/offers/${id}`} >
           <img
             className="place-card__image"
             src={previewImage}
+            //TODO написать ф-цию для width / height c переданным cardType, кот возвращает объект с полями width и height и деструктурировать его
             width={
               offerCardType === CardType.FavoritesCard
                 ? ImgSettings.FavouriteCardWidth
@@ -74,7 +75,7 @@ export default function OfferCard({
         </div>
         <Rating offerCardType={offerCardType} />
         <h2 className="place-card__name">
-          <Link to={`offer/:${id}`}>{title}</Link>
+          <Link to={`offers/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>

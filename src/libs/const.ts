@@ -19,7 +19,7 @@ export enum AuthorisationStatus {
 export enum AppRoutes {
   Main = '/',
   Favourites = '/favourites',
-  Offer = '/offer/:id',
+  Offers = '/offers/:id',
   Login = '/log-in',
   Error = '*'
 }
@@ -82,4 +82,27 @@ export enum APIRouts {
   Offers = '/offers',
   Authorisation = '/login',
   Logout = '/logout',
+  Reviews = '/comments'
 }
+
+export enum ReviewLength {
+  Max = 300,
+  Min = 50,
+}
+
+export enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+}
+
+export const RateValues: {[index: string]: string } = {
+  '1': 'terribly',
+  '2': 'badly',
+  '3': 'not bad',
+  '4': 'good',
+  '5': 'perfect',
+};
+
+

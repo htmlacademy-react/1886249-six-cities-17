@@ -1,18 +1,31 @@
-import { Review } from '@/libs/types/types';
+import { useAppSelector } from '@/hooks';
 import ReviewForm from '../../offer/review-form/review-form';
-import ReviewsList from '../reviews-list/reviews-list';
+import { offerFullSElectors } from '@/storage/slices/fullOffer';
+import { authorisationSelectors } from '@/storage/slices/authorization';
+import { AuthorisationStatus } from '@/libs/const';
+import { formatReviewList } from '@/libs/helpers';
+import ReviewItem from '../review-item/review-item';
+import { ReactNode, useMemo } from 'react';
 
-type OfferReviews = {
-  reviews: Review[];
-}
 
-function OfferReviews({reviews}: OfferReviews) {
+function OfferReviews() {
+  const isUserAuthorised = useAppSelector(authorisationSelectors.selectAuthorisationStatus);
+  const reviews = useAppSelector(offerFullSElectors.selectReviews);
   const reviewsAmount = reviews.length;
+  const formattetReviews = formatReviewList(reviews);
+  const reviewsList: ReactNode = useMemo(() => (
+    <>
+      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviewsAmount}</span></h2>
+      <ul className="reviews__list">
+        {formattetReviews.map((review) => <ReviewItem review={review} key={review.id}/>)}
+      </ul>
+    </>
+  ),[formattetReviews, reviewsAmount]
+  );
   return (
     <section className="offer__reviews reviews">
-      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviewsAmount}</span></h2>
-      <ReviewsList reviews={reviews} />
-      <ReviewForm/>
+      {reviewsList}
+      {isUserAuthorised === AuthorisationStatus.Auth && <ReviewForm/>}
     </section>
   );
 }

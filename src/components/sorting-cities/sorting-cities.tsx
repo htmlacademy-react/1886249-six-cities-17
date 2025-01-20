@@ -1,12 +1,11 @@
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { SortItem } from '@/libs/const';
 import { offersActions, offersSelectors } from '@/storage/slices/offers';
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 function SortingCities() {
 
-  const currentSort = useSelector(offersSelectors.selectCurrentSort);
+  const currentSort = useAppSelector(offersSelectors.selectCurrentSort);
 
   const sortSpanRef = useRef<HTMLElement>(null);
 

@@ -42,6 +42,8 @@ export type User = {
   name: string;
   avatarUrl: string;
   isPro: boolean;
+  email: string;
+  token: string;
 }
 
 export type Review = {
@@ -52,10 +54,13 @@ export type Review = {
   rating: 4;
 }
 
-export enum RequestStatus {
-  Idle = 'Idle',
-  Loading = 'Loading',
-  Success = 'Success',
-  Failed = 'Failed'
+export type ReviewToSend = {
+    comment: string;
+    rating: number;
+  }
+
+export type LoginData = {
+  email: string;
+  password: string;
 }
 

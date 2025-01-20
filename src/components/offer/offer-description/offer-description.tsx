@@ -3,10 +3,9 @@ import { OfferFull } from '../../../libs/types/types';
 import HostInfo from '../host-info/host-info';
 import OfferReviews from '../reviews/offer-reviews/offer-reviews';
 import { BookmarkOfferFull, OfferType } from '@/libs/const';
-import { reviews } from '@/libs/mocks/reviews';
 
 type OfferDescription = {
-  currentOffer: OfferFull | undefined;
+  currentOffer: OfferFull;
 }
 
 function OfferDescription({currentOffer}: OfferDescription) {
@@ -56,7 +55,7 @@ function OfferDescription({currentOffer}: OfferDescription) {
           </ul>
         </div>
         <HostInfo currentOffer={currentOffer}/>
-        <OfferReviews reviews={reviews} />
+        <OfferReviews />
       </div>
     </div>
   );

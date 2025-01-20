@@ -8,7 +8,9 @@ type MainCitiesLocationsProps = {
 	activeCity: Cities;
 };
 function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
+
   const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className="tabs">
       <section className="locations container">
@@ -27,6 +29,7 @@ function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
                     ? 'locations__item-link tabs__item tabs__item--active'
                     : 'locations__item-link tabs__item'
                 }
+                //FIXME: обновление URL опаздывает на 1 город
                 to={''}
               >
                 <span>{city}</span>

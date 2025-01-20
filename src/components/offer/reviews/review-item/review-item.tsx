@@ -1,3 +1,4 @@
+import { formatDate } from '@/libs/helpers';
 import { Review } from '@/libs/types/types';
 
 type ReviewItemProps = {
@@ -5,10 +6,9 @@ type ReviewItemProps = {
 }
 
 function ReviewItem({review}: ReviewItemProps) {
-  const dateIso = review.date;
-  const date = new Date(dateIso);
-  const dateFormatter = new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric'});
-  const formattedDate = dateFormatter.format(date);
+
+  const formattedDate = formatDate(review.date);
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
