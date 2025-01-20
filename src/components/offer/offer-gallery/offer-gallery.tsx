@@ -1,5 +1,5 @@
 type OfferGalleryProps = {
-  images: string[] | undefined;
+  images: string[];
 }
 
 function OfferGallery({images}: OfferGalleryProps) {

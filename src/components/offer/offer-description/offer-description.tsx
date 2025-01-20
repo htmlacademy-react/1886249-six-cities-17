@@ -5,7 +5,7 @@ import OfferReviews from '../reviews/offer-reviews/offer-reviews';
 import { BookmarkOfferFull, OfferType } from '@/libs/const';
 
 type OfferDescription = {
-  currentOffer: OfferFull | undefined;
+  currentOffer: OfferFull;
 }
 
 function OfferDescription({currentOffer}: OfferDescription) {

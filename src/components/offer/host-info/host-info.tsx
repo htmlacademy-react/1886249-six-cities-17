@@ -1,7 +1,7 @@
 import { OfferFull } from '../../../libs/types/types';
 
 type HostInfoProps = {
-  currentOffer: OfferFull | undefined;
+  currentOffer: OfferFull;
 }
 
 function HostInfo({currentOffer}: HostInfoProps) {

@@ -5,6 +5,7 @@ import { authorisationSelectors } from '@/storage/slices/authorization';
 import { AuthorisationStatus } from '@/libs/const';
 import { formatReviewList } from '@/libs/helpers';
 import ReviewItem from '../review-item/review-item';
+import { ReactNode, useMemo } from 'react';
 
 
 function OfferReviews() {
@@ -12,12 +13,18 @@ function OfferReviews() {
   const reviews = useAppSelector(offerFullSElectors.selectReviews);
   const reviewsAmount = reviews.length;
   const formattetReviews = formatReviewList(reviews);
-  return (
-    <section className="offer__reviews reviews">
+  const reviewsList: ReactNode = useMemo(() => (
+    <>
       <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviewsAmount}</span></h2>
       <ul className="reviews__list">
         {formattetReviews.map((review) => <ReviewItem review={review} key={review.id}/>)}
       </ul>
+    </>
+  ),[formattetReviews, reviewsAmount]
+  );
+  return (
+    <section className="offer__reviews reviews">
+      {reviewsList}
       {isUserAuthorised === AuthorisationStatus.Auth && <ReviewForm/>}
     </section>
   );
