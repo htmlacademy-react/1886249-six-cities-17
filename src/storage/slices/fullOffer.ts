@@ -11,7 +11,7 @@ type OfferInitialState = {
   offerRequestStatus: RequestStatus;
   nearPlacesRequestStatus: RequestStatus;
   reviewsRequestStatus: RequestStatus;
-  PostReviewRequestStatus: RequestStatus;
+  postReviewRequestStatus: RequestStatus;
   isOfferError: boolean;
   isFormDisabled: boolean;
 }
@@ -23,9 +23,9 @@ const initialState: OfferInitialState = {
   offerRequestStatus: RequestStatus.Idle,
   nearPlacesRequestStatus: RequestStatus.Idle,
   reviewsRequestStatus: RequestStatus.Idle,
-  PostReviewRequestStatus: RequestStatus.Idle,
+  postReviewRequestStatus: RequestStatus.Idle,
   isOfferError: false,
-  isFormDisabled: false,
+  isFormDisabled: true,
 };
 
 
@@ -70,16 +70,16 @@ const offerFullSlice = createSlice({
         state.reviewsRequestStatus = RequestStatus.Success;
       })
       .addCase(sendReview.pending, (state) => {
-        state.PostReviewRequestStatus = RequestStatus.Loading;
+        state.postReviewRequestStatus = RequestStatus.Loading;
         state.isFormDisabled = true;
       })
       .addCase(sendReview.fulfilled, (state, action: PayloadAction<Review>) => {
-        state.PostReviewRequestStatus = RequestStatus.Success;
+        state.postReviewRequestStatus = RequestStatus.Success;
         state.isFormDisabled = false;
         state.reviews.push(action.payload);
       })
       .addCase(sendReview.rejected, (state) => {
-        state.PostReviewRequestStatus = RequestStatus.Failed;
+        state.postReviewRequestStatus = RequestStatus.Failed;
         state.isFormDisabled = false;
       });
   },
@@ -90,7 +90,7 @@ const offerFullSlice = createSlice({
     selectReviews: (state) => state.reviews,
     selectIsOfferError: (state) => state.isOfferError,
     selectIsFormDisabled: (state) => state.isFormDisabled,
-    selectPostReviewRequestStatus: (state) => state.PostReviewRequestStatus,
+    selectPostReviewRequestStatus: (state) => state.postReviewRequestStatus,
   }
 });
 

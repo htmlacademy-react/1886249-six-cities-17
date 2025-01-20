@@ -33,11 +33,11 @@ export default function MainPage ({activeCity, offers}: MainPageProps): JSX.Elem
   const getMainContent = () => {
     if (offers.length && isLoading === RequestStatus.Success){
       return <MainCitiesContainer placesToStay={placesToStay} activeCity={activeCity} offers={particularCityOffers} city={safeCityForOffers}/>;
-    } else if (isLoading === RequestStatus.Loading){
+    } if (isLoading === RequestStatus.Loading){
       return <Spinner />;
-    } else if (isLoading === RequestStatus.Success && !offers.length) {
+    } if (isLoading === RequestStatus.Success && !offers.length) {
       return <MainEmpty activeCity={activeCity}/>;
-    } else if (isLoading === RequestStatus.Failed) {
+    } if (isLoading === RequestStatus.Failed) {
       return <p className='fail-message'>Oooooops... something went wrong, try one more time</p>;
     }
   };
