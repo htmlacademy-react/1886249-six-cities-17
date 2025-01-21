@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { USER_SLICE_NAME } from './sliceNames';
 import { User } from '@/libs/types/types';
+import { login, logout } from '@/thunk/authorisation';
 
 type UserInitialState = {
   userData: User | null;
@@ -17,6 +18,15 @@ const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.userData = action.payload;
     }},
+  extraReducers: (builder) => {
+    builder
+      .addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
+        state.userData = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.userData = null;
+      });
+  },
   selectors: {
     selectUser: (state) => state.userData,
   },

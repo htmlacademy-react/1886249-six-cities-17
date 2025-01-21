@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { getToken } from './token';
-import { toast } from 'react-toast';
+import { toast } from 'react-toastify';
 
 const BACKEND_URL = 'https://16.design.htmlacademy.pro/six-cities';
 const REQUEST_TIMEOUT = 5000;
