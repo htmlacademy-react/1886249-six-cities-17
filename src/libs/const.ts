@@ -82,7 +82,8 @@ export enum APIRouts {
   Offers = '/offers',
   Authorisation = '/login',
   Logout = '/logout',
-  Reviews = '/comments'
+  Reviews = '/comments',
+  Favourite = '/favorite',
 }
 
 export enum ReviewLength {

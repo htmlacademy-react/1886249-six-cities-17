@@ -1,4 +1,4 @@
-import FavouritesPage from '../pages/favorites-page/favorites-page';
+import FavouritesPage from '../pages/favourites-page/favourites-page';
 import LoginPage from '../pages/login-page/login-page';
 import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
@@ -12,6 +12,7 @@ import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
+import { fetchFavourits } from '@/thunk/favourites';
 
 function App() {
 
@@ -25,8 +26,8 @@ function App() {
   useEffect(() => {
     dispatch(fetchOffers());
     dispatch(checkAuthorisation());
+    dispatch(fetchFavourits());
   }, [dispatch]);
-
 
   return (
     <Routes>
