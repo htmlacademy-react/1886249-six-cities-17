@@ -38,6 +38,7 @@ const favouriteSlice = createSlice({
       })
       .addCase(changeFavouriteStatus.fulfilled, (state, action) => {
         state.fetchFavouritsStatus = RequestStatus.Success;
+        console.log(action.payload);
       })
       .addCase(changeFavouriteStatus.rejected, () => {
         toast.warn('Error while adding to Favourites, try again');

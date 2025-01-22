@@ -68,6 +68,7 @@ export default function OfferCard({
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <AddToBookmarks
+            id={id}
             isFavourite = {isFavorite}
             bookmarkSizeType={BookmarkOfferCard}
             offerType={OfferType.OfferCard}

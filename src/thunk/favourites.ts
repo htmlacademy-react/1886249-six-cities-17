@@ -15,7 +15,7 @@ export const fetchFavourits = createAsyncThunk<OfferCardPrew[], undefined>(`${FA
 
 export const changeFavouriteStatus = createAsyncThunk<OfferCardPrew, {id: string; favouriteStatus: number}>(`${FAVOURITES_SLICE_NAME}/changeFavouriteStatus`, async ({id,favouriteStatus}, thunkApi) => {
   try {
-    const result = await api.post(`${APIRouts.Favourite}/${id}/${favouriteStatus}`);
+    const result = await api.post<OfferCardPrew>(`${APIRouts.Favourite}/${id}/${favouriteStatus}`);
     return result;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
