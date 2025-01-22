@@ -1,16 +1,20 @@
 import { OfferCardPrew } from '@/libs/types/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { FAVOURITES_SLICE_NAME } from './sliceNames';
-import { fetchFavourits } from '@/thunk/favourites';
+import { changeFavouriteStatus, fetchFavourits } from '@/thunk/favourites';
+import { toast } from 'react-toastify';
+import { RequestStatus } from '@/libs/const';
 
 type FavouriteInitialState = {
   favouritesCards: OfferCardPrew[];
   favouritesNumber: number;
+  fetchFavouritsStatus: RequestStatus;
 }
 
 const initialState: FavouriteInitialState = {
   favouritesCards: [],
-  favouritesNumber: 0
+  favouritesNumber: 0,
+  fetchFavouritsStatus: RequestStatus.Idle,
 };
 
 const favouriteSlice = createSlice({
@@ -20,10 +24,24 @@ const favouriteSlice = createSlice({
     setFavouritesNumber: ()=>{}
   },
   extraReducers(builder) {
-    builder.addCase(fetchFavourits.fulfilled, (state, action) => {
-      state.favouritesCards = action.payload.data;
-      state.favouritesNumber = action.payload.data.length;
-    });
+    builder
+      .addCase(fetchFavourits.pending, (state) => {
+        state.fetchFavouritsStatus = RequestStatus.Loading;
+      })
+      .addCase(fetchFavourits.fulfilled, (state, action) => {
+        state.favouritesCards = action.payload.data;
+        state.favouritesNumber = action.payload.data.length;
+      })
+      .addCase(fetchFavourits.rejected, (state) => {
+        state.fetchFavouritsStatus = RequestStatus.Failed;
+        toast.warn('Error while loading Favourites, try again');
+      })
+      .addCase(changeFavouriteStatus.fulfilled, (state, action) => {
+        state.fetchFavouritsStatus = RequestStatus.Success;
+      })
+      .addCase(changeFavouriteStatus.rejected, () => {
+        toast.warn('Error while adding to Favourites, try again');
+      });
   },
   selectors: {
     selectFavourites: (state) => state.favouritesCards,

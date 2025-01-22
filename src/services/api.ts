@@ -31,15 +31,13 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<DetailMessageType>) => {
-      if(error.response) {
+      if(error.response && error.response.status !== 401) {
         const detailMessage = (error.response.data);
         toast.warn(detailMessage.message);
       }
       throw error;
     }
   );
-
   return api;
-
 };
 

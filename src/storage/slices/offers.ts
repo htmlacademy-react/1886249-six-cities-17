@@ -3,6 +3,7 @@ import { OFFERS_SLICE_NAME } from './sliceNames';
 import { Cities, RequestStatus, SortItem } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import { fetchOffers } from '@/thunk/offers';
+import { toast } from 'react-toastify';
 
 
 export type OffersState = {
@@ -44,6 +45,7 @@ const offersSlice = createSlice({
       .addCase(fetchOffers.rejected, (state, action) => {
         state.requestStatus = RequestStatus.Failed;
         state.loadingError = action.payload;
+        toast.warn('Error while loading offers');
       });
   },
   selectors: {

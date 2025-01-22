@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
 import { fetchFavourits } from '@/thunk/favourites';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
@@ -30,19 +31,22 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index path={`${AppRoutes.Main}`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
-        <Route index path={`${AppRoutes.Main}:city`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
-        <Route path={AppRoutes.Favourites} element={
-          <PrivateRoute><FavouritesPage /></PrivateRoute>
-        }
-        />
-        <Route path={AppRoutes.Offers} element={<OfferPage offers={offers} />} />
-      </Route>
-      <Route path={AppRoutes.Login} element={<LoginPage />} />
-      <Route path={AppRoutes.Error} element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path={AppRoutes.Main} element={<Layout />} >
+          <Route index path={`${AppRoutes.Main}`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
+          <Route index path={`${AppRoutes.Main}:city`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
+          <Route path={AppRoutes.Favourites} element={
+            <PrivateRoute><FavouritesPage /></PrivateRoute>
+          }
+          />
+          <Route path={AppRoutes.Offers} element={<OfferPage offers={offers} />} />
+        </Route>
+        <Route path={AppRoutes.Login} element={<LoginPage />} />
+        <Route path={AppRoutes.Error} element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 

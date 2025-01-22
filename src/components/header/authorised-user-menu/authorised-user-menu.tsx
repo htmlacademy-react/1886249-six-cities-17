@@ -5,7 +5,6 @@ import { userSelector } from '@/storage/slices/user';
 import { logout } from '@/thunk/authorisation';
 import { Link } from 'react-router-dom';
 
-
 export const AuthorisedUserMenu = () => {
 
   const dispatch = useAppDispatch();
