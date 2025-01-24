@@ -1,13 +1,13 @@
+import { createAppAsyncThunk } from '@/hooks';
 import { APIRouts } from '@/libs/const';
-import { LoginData, User } from '@/libs/types/types';
+import { User } from '@/libs/types/types';
 import { dropToken, getToken, saveToken } from '@/services/token';
 import { api } from '@/storage';
 import { AUTH_SLICE_NAME } from '@/storage/slices/sliceNames';
 import { userAction } from '@/storage/slices/user';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
-export const checkAuthorisation = createAsyncThunk<User, undefined>(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
+export const checkAuthorisation = createAppAsyncThunk(`${AUTH_SLICE_NAME}/checkAuth`, async (_, thunkApi) => {
   try {
     const result = await api.get<User>(APIRouts.Authorisation);
     if (result.status === 200) {
@@ -19,7 +19,7 @@ export const checkAuthorisation = createAsyncThunk<User, undefined>(`${AUTH_SLIC
   }
 });
 
-export const login = createAsyncThunk<User, LoginData>(`${AUTH_SLICE_NAME}/login`, async (loginData, thunkApi) => {
+export const login = createAppAsyncThunk(`${AUTH_SLICE_NAME}/login`, async (loginData, thunkApi) => {
   try {
     const {data} = await api.post<User>(APIRouts.Authorisation, loginData, { headers: {
       'Content-Type': 'application/json',}});
@@ -30,7 +30,7 @@ export const login = createAsyncThunk<User, LoginData>(`${AUTH_SLICE_NAME}/login
   }
 });
 
-export const logout = createAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_, thunkApi) => {
+export const logout = createAppAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_, thunkApi) => {
   try {
     const {status} = await api.delete(APIRouts.Logout, { headers: {
       'Content-Type': 'application/json',

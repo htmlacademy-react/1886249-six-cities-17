@@ -9,7 +9,7 @@ import { OfferCardPrew, OfferCity } from '@/libs/types/types';
 
 type MapProps = {
   mapType: MapType;
-  selectedOffer: OfferCardPrew | null;
+  selectedOffer: OfferCardPrew | undefined;
   city: OfferCity;
   offers: OfferCardPrew[];
 }

@@ -36,13 +36,15 @@ const favouriteSlice = createSlice({
         state.fetchFavouritsStatus = RequestStatus.Failed;
         toast.warn('Error while loading Favourites, try again');
       })
-      .addCase(changeFavouriteStatus.fulfilled, (state, action) => {
+      .addCase(changeFavouriteStatus.fulfilled, (state) => {
         state.fetchFavouritsStatus = RequestStatus.Success;
-        console.log(action.payload);
       })
-      .addCase(changeFavouriteStatus.rejected, () => {
-        toast.warn('Error while adding to Favourites, try again');
-      });
+      .addCase(changeFavouriteStatus.rejected, (_, action) => {
+        if (action.payload.status !== 201) {
+          toast.warn('Error while adding to Favourites, try again');
+        }
+      }
+      );
   },
   selectors: {
     selectFavourites: (state) => state.favouritesCards,

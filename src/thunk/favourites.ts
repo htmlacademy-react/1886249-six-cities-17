@@ -1,10 +1,11 @@
+import { createAppAsyncThunk } from '@/hooks';
 import { APIRouts } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import { api } from '@/storage';
+import { offersActions, offersSelectors } from '@/storage/slices/offers';
 import { FAVOURITES_SLICE_NAME } from '@/storage/slices/sliceNames';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchFavourits = createAsyncThunk<OfferCardPrew[], undefined>(`${FAVOURITES_SLICE_NAME}/fetch`, async (_, thunkApi) => {
+export const fetchFavourits = createAppAsyncThunk(`${FAVOURITES_SLICE_NAME}/fetch`, async (_, thunkApi) => {
   try {
     const result = await api.get<OfferCardPrew[]>(APIRouts.Favourite);
     return result;
@@ -13,11 +14,25 @@ export const fetchFavourits = createAsyncThunk<OfferCardPrew[], undefined>(`${FA
   }
 });
 
-export const changeFavouriteStatus = createAsyncThunk<OfferCardPrew, {id: string; favouriteStatus: number}>(`${FAVOURITES_SLICE_NAME}/changeFavouriteStatus`, async ({id,favouriteStatus}, thunkApi) => {
+export const changeFavouriteStatus = createAppAsyncThunk<OfferCardPrew | number, {id: string; favouriteStatus: number}>(`${FAVOURITES_SLICE_NAME}/changeFavouriteStatus`, async ({id,favouriteStatus}, {getState, dispatch}) => {
+
   try {
     const result = await api.post<OfferCardPrew>(`${APIRouts.Favourite}/${id}/${favouriteStatus}`);
-    return result;
+
+    const offers = offersSelectors.selectOffers(getState());
+
+    const updatedOffers = offers.map((offer) => offer.id === result.data.id
+      ? {...offer, isFavorite: result.data.isFavorite}
+      : offer);
+
+    dispatch(offersActions.updateOffers(updatedOffers));
+    dispatch(fetchFavourits());
+
+    return result.status;
+
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    return error;
   }
 });
+
+

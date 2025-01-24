@@ -32,6 +32,9 @@ const offersSlice = createSlice({
     setCurrentSort: (state, action: PayloadAction<SortItem>) => {
       state.currentSort = action.payload;
     },
+    updateOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
+      state.offers = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -42,9 +45,8 @@ const offersSlice = createSlice({
         state.offers = action.payload;
         state.requestStatus = RequestStatus.Success;
       })
-      .addCase(fetchOffers.rejected, (state, action) => {
+      .addCase(fetchOffers.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;
-        state.loadingError = action.payload;
         toast.warn('Error while loading offers');
       });
   },

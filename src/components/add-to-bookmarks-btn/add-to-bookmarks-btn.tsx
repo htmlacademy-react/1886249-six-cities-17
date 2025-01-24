@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { AppRoutes, AuthorisationStatus, BookmarkOfferCard, BookmarkOfferFull, OfferType } from '../../libs/const';
-import { authorisationSelectors } from '@/storage/slices/authorization';
+import { AppRoutes, BookmarkOfferCard, BookmarkOfferFull, OfferType } from '../../libs/const';
 import { useNavigate } from 'react-router-dom';
 import { changeFavouriteStatus } from '@/thunk/favourites';
+import { userSelector } from '@/storage/slices/user';
 
 
 type AddToBookmarksProps = {
@@ -24,8 +24,7 @@ function AddToBookmarks({ bookmarkSizeType, offerType, isFavourite, id}: AddToBo
     } return `${offerType}__bookmark-button button`;
   };
 
-  // TODO: нужно заставить сразу же обновляться offers, они обновляются только после обновления страницы
-  const authStatus = useAppSelector(authorisationSelectors.selectAuthorisationStatus);
+  const isUserExist = useAppSelector(userSelector.selectUser) !== null;
 
   const changeFavouriteStatusTo = () => {
     if (isFavourite === true) {
@@ -36,7 +35,7 @@ function AddToBookmarks({ bookmarkSizeType, offerType, isFavourite, id}: AddToBo
   };
 
   const handleBookmarkClick = () => {
-    if (authStatus !== AuthorisationStatus.Auth) {
+    if (!isUserExist) {
       navigate(AppRoutes.Login);
     } else {
       dispatch(changeFavouriteStatus({id: id, favouriteStatus: changeFavouriteStatusTo()}));
