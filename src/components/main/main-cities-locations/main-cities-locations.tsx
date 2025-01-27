@@ -1,5 +1,4 @@
 import { Cities } from '@/libs/const';
-import { DEFAULT_CITY } from '@/libs/mocks/cities-locations';
 import type { AppDispatch } from '@/storage';
 import { offersActions } from '@/storage/slices/offers';
 import { useEffect } from 'react';

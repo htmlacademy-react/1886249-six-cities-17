@@ -1,14 +1,23 @@
 import './styles.css';
-import { AuthorisationStatus } from '../../libs/const';
 import Logo from '../logo/Logo';
-import { authorisationSelectors } from '@/storage/slices/authorization';
-import { useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { AuthorisedUserMenu } from './authorised-user-menu/authorised-user-menu';
 import { NotAuthorisedUserMenu } from './not-authorised-user-menu/not-authorised-user-menu';
+import { useEffect } from 'react';
+import { fetchFavourits } from '@/thunk/favourites';
+import { userSelector } from '@/storage/slices/user';
 
 function Header() {
 
-  const authState = useAppSelector(authorisationSelectors.selectAuthorisationStatus);
+  const dispatch = useAppDispatch();
+
+  const user = useAppSelector(userSelector.selectUser);
+
+  useEffect(() => {
+    if (user !== null) {
+      dispatch(fetchFavourits());
+    }
+  }, [dispatch, user]);
 
   return (
     <header className="header">
@@ -17,7 +26,7 @@ function Header() {
           <div className="header__left">
             <Logo/>
           </div>
-          {authState === AuthorisationStatus.Auth
+          {user
             ? <AuthorisedUserMenu/>
             : <NotAuthorisedUserMenu/>}
         </div>

@@ -15,7 +15,9 @@ export const checkAuthorisation = createAppAsyncThunk(`${AUTH_SLICE_NAME}/checkA
     }
     return result.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
@@ -26,7 +28,9 @@ export const login = createAppAsyncThunk(`${AUTH_SLICE_NAME}/login`, async (logi
     saveToken(data.token);
     return data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
@@ -38,6 +42,8 @@ export const logout = createAppAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_,
     dropToken();
     return status;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });

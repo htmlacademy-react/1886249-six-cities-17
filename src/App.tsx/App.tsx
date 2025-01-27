@@ -4,7 +4,7 @@ import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import { AppRoutes, AuthorisationStatus } from '../libs/const';
+import { AppRoutes } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
 import Layout from '../layout/Layout';
 import { offersSelectors } from '@/storage/slices/offers';
@@ -12,9 +12,7 @@ import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
-import { fetchFavourits } from '@/thunk/favourites';
 import { ToastContainer } from 'react-toastify';
-import { authorisationSelectors } from '@/storage/slices/authorization';
 
 function App() {
 
@@ -24,15 +22,11 @@ function App() {
 
   const activeCity = useAppSelector(offersSelectors.selectActiveCity);
 
-  const authStatus = useAppSelector(authorisationSelectors.selectAuthorisationStatus);
 
   useEffect(() => {
     dispatch(fetchOffers());
     dispatch(checkAuthorisation());
-    if (authStatus === AuthorisationStatus.Auth) {
-      dispatch(fetchFavourits());
-    }
-  }, [dispatch, authStatus]);
+  }, [dispatch]);
 
   return (
     <>

@@ -30,6 +30,11 @@ const offerFullSlice = createSlice({
   reducers: {
     setFormDisabled: (state, action: PayloadAction<boolean>) => {
       state.isFormDisabled = action.payload;
+    },
+    updateFavouriteOffer: (state, action: PayloadAction<boolean>) => {
+      if (state.offer) {
+        state.offer = {...state.offer, isFavorite: action.payload};
+      }
     }
   },
   extraReducers: (builder) => {

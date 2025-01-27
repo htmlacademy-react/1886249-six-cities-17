@@ -34,7 +34,10 @@ const offersSlice = createSlice({
     },
     updateOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
       state.offers = action.payload;
-    }
+    },
+    updateOffer: (state, action: PayloadAction<OfferCardPrew>) => {
+      state.offers = state.offers.map((offer) => offer.id === action.payload.id ? action.payload : offer);
+    },
   },
   extraReducers: (builder) => {
     builder

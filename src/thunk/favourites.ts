@@ -2,7 +2,8 @@ import { createAppAsyncThunk } from '@/hooks';
 import { APIRouts } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import { api } from '@/storage';
-import { offersActions, offersSelectors } from '@/storage/slices/offers';
+import { offerFullActions } from '@/storage/slices/fullOffer';
+import { offersActions } from '@/storage/slices/offers';
 import { FAVOURITES_SLICE_NAME } from '@/storage/slices/sliceNames';
 
 export const fetchFavourits = createAppAsyncThunk(`${FAVOURITES_SLICE_NAME}/fetch`, async (_, thunkApi) => {
@@ -10,28 +11,26 @@ export const fetchFavourits = createAppAsyncThunk(`${FAVOURITES_SLICE_NAME}/fetc
     const result = await api.get<OfferCardPrew[]>(APIRouts.Favourite);
     return result;
   } catch (error){
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
-export const changeFavouriteStatus = createAppAsyncThunk<OfferCardPrew | number, {id: string; favouriteStatus: number}>(`${FAVOURITES_SLICE_NAME}/changeFavouriteStatus`, async ({id,favouriteStatus}, {getState, dispatch}) => {
+export const changeFavouriteStatus = createAppAsyncThunk<OfferCardPrew, {id: string; favouriteStatus: number}>(`${FAVOURITES_SLICE_NAME}/changeFavouriteStatus`, async ({id,favouriteStatus}, {dispatch, rejectWithValue}) => {
 
   try {
     const result = await api.post<OfferCardPrew>(`${APIRouts.Favourite}/${id}/${favouriteStatus}`);
 
-    const offers = offersSelectors.selectOffers(getState());
+    dispatch(offerFullActions.updateFavouriteOffer(result.data.isFavorite));
+    dispatch(offersActions.updateOffer(result.data));
 
-    const updatedOffers = offers.map((offer) => offer.id === result.data.id
-      ? {...offer, isFavorite: result.data.isFavorite}
-      : offer);
-
-    dispatch(offersActions.updateOffers(updatedOffers));
-    dispatch(fetchFavourits());
-
-    return result.status;
-
+    return result.data ;
   } catch (error) {
-    return error;
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue('Unknown error occurred');
   }
 });
 

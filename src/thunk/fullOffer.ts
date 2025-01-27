@@ -10,7 +10,9 @@ export const getOffer = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getFullOff
     const result = await api.get<OfferFull>(`${APIRouts.Offers}/${id}`);
     return result.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
@@ -19,7 +21,9 @@ export const getNearPlaces = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getNe
     const result = await api.get<OfferCardPrew[]>(`${APIRouts.Offers}/${id}/nearby`);
     return result.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
@@ -28,7 +32,9 @@ export const getReviews = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getRevie
     const result = await api.get<Review[]>(`${APIRouts.Reviews}/${id}`);
     return result.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 });
 
@@ -37,6 +43,8 @@ export const sendReview = createAppAsyncThunk<Review, {id: string; review: Revie
     const result = await api.post<Review>(`${APIRouts.Reviews}/${id}`, review);
     return result.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error);
+    if (error instanceof Error) {
+      return thunkApi.rejectWithValue(error.message);
+    } return thunkApi.rejectWithValue('Unknown error occurred');
   }
 });
