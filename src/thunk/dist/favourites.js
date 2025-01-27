@@ -52,7 +52,7 @@ exports.fetchFavourits = hooks_1.createAppAsyncThunk(sliceNames_1.FAVOURITES_SLI
                 return [4 /*yield*/, storage_1.api.get(const_1.APIRouts.Favourite)];
             case 1:
                 result = _a.sent();
-                return [2 /*return*/, result];
+                return [2 /*return*/, result.data];
             case 2:
                 error_1 = _a.sent();
                 if (error_1 instanceof Error) {

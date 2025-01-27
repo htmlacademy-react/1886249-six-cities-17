@@ -9,7 +9,7 @@ import { FAVOURITES_SLICE_NAME } from '@/storage/slices/sliceNames';
 export const fetchFavourits = createAppAsyncThunk(`${FAVOURITES_SLICE_NAME}/fetch`, async (_, thunkApi) => {
   try {
     const result = await api.get<OfferCardPrew[]>(APIRouts.Favourite);
-    return result;
+    return result.data;
   } catch (error){
     if (error instanceof Error) {
       return thunkApi.rejectWithValue(error.message);

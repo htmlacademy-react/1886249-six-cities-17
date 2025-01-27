@@ -29,7 +29,9 @@ const favouriteSlice = createSlice({
         state.fetchFavouritsStatus = RequestStatus.Loading;
       })
       .addCase(fetchFavourits.fulfilled, (state, action) => {
-        state.favouritesCards = action.payload.data;
+        if (action.payload) {
+          state.favouritesCards = action.payload;
+        }
       })
       .addCase(fetchFavourits.rejected, (state) => {
         state.fetchFavouritsStatus = RequestStatus.Failed;
