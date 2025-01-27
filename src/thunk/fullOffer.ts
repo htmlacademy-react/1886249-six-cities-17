@@ -12,7 +12,7 @@ export const getOffer = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getFullOff
   } catch (error) {
     if (error instanceof Error) {
       return thunkApi.rejectWithValue(error.message);
-    }
+    } return thunkApi.rejectWithValue('Unknown error occurred');
   }
 });
 
@@ -23,7 +23,7 @@ export const getNearPlaces = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getNe
   } catch (error) {
     if (error instanceof Error) {
       return thunkApi.rejectWithValue(error.message);
-    }
+    } return thunkApi.rejectWithValue('Unknown error occurred');
   }
 });
 
@@ -34,7 +34,7 @@ export const getReviews = createAppAsyncThunk(`${FULL_OFFER_SLICE_NAME}/getRevie
   } catch (error) {
     if (error instanceof Error) {
       return thunkApi.rejectWithValue(error.message);
-    }
+    } return thunkApi.rejectWithValue('Unknown error occurred');
   }
 });
 

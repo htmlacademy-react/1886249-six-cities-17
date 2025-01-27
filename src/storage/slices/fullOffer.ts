@@ -46,7 +46,9 @@ const offerFullSlice = createSlice({
         toast.warn('Error occured while loading an offer');
       })
       .addCase(getNearPlaces.fulfilled, (state, action) => {
-        state.nearPlaces = action.payload;
+        if (action.payload) {
+          state.nearPlaces = action.payload;
+        }
       })
       .addCase(getNearPlaces.rejected, () => {
         toast.warn('Error occured while loading near places');
