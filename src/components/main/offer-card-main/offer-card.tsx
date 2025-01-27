@@ -21,7 +21,7 @@ export default function OfferCard({
   onListItemHover,
   offerCardType,
 }: OfferCardProps) {
-  const { id, previewImage, isPremium, price, title } = offer;
+  const { id, previewImage, isPremium, price, title, isFavorite } = offer;
 
   return (
     <article
@@ -68,8 +68,9 @@ export default function OfferCard({
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <AddToBookmarks
+            id={id}
+            isFavourite = {isFavorite}
             bookmarkSizeType={BookmarkOfferCard}
-            offerCardType={offerCardType}
             offerType={OfferType.OfferCard}
           />
         </div>

@@ -15,8 +15,8 @@ type MainCitiesContainerProps = {
 
 function MainCitiesContainer({placesToStay, offers, city, activeCity }: MainCitiesContainerProps) {
 
-  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | null>(
-    null
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardPrew | undefined>(
+    undefined
   );
 
   const handleListItemHover = (listItemId: string | null) => {

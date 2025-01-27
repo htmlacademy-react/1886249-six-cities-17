@@ -3,6 +3,7 @@ import { OFFERS_SLICE_NAME } from './sliceNames';
 import { Cities, RequestStatus, SortItem } from '@/libs/const';
 import { OfferCardPrew } from '@/libs/types/types';
 import { fetchOffers } from '@/thunk/offers';
+import { toast } from 'react-toastify';
 
 
 export type OffersState = {
@@ -31,6 +32,12 @@ const offersSlice = createSlice({
     setCurrentSort: (state, action: PayloadAction<SortItem>) => {
       state.currentSort = action.payload;
     },
+    updateOffers: (state, action: PayloadAction<OfferCardPrew[]>) => {
+      state.offers = action.payload;
+    },
+    updateOffer: (state, action: PayloadAction<OfferCardPrew>) => {
+      state.offers = state.offers.map((offer) => offer.id === action.payload.id ? action.payload : offer);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -38,12 +45,14 @@ const offersSlice = createSlice({
         state.requestStatus = RequestStatus.Loading;
       })
       .addCase(fetchOffers.fulfilled, (state, action) => {
-        state.offers = action.payload;
+        if (action.payload) {
+          state.offers = action.payload;
+        }
         state.requestStatus = RequestStatus.Success;
       })
-      .addCase(fetchOffers.rejected, (state, action) => {
+      .addCase(fetchOffers.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;
-        state.loadingError = action.payload;
+        toast.warn('Error while loading offers');
       });
   },
   selectors: {

@@ -1,5 +1,5 @@
 import { SortItem } from './const';
-import { OfferCardPrew, Review } from './types/types';
+import type { OfferCardPrew, Review } from './types/types';
 
 
 export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem):OfferCardPrew[] => {
@@ -15,20 +15,6 @@ export const sortOffers = (offers: OfferCardPrew[], currentSort: SortItem):Offer
   }
 };
 
-
-export const mapOffers = (offers: OfferCardPrew[]) => offers.map((item) => ({
-  location: item.location,
-  isFavorite: item.isFavorite,
-  isPremium: item.isPremium,
-  rating: item.rating,
-  id: item.id,
-  title: item.title,
-  type: item.type,
-  price: item.price,
-  city: item.city,
-  previewImage: item.previewImage
-}));
-
 export const formatDate = (isoDate: string): string => {
   const date = new Date(isoDate);
   const dateFormatter = new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric'});
@@ -36,6 +22,4 @@ export const formatDate = (isoDate: string): string => {
   return formattedDate;
 };
 
-export const formatReviewList = (reviewList: Review[]) => reviewList.slice(0,10)
-  .sort((reviewA, reviewB) => new Date(reviewB.date).getTime() - new Date(reviewA.date).getTime());
-
+export const formatReviewList = (reviewList: Review[]) => [...reviewList].sort((reviewA, reviewB) => new Date(reviewB.date).getTime() - new Date(reviewA.date).getTime()).slice(0,10);

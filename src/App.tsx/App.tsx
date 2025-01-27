@@ -1,4 +1,4 @@
-import FavouritesPage from '../pages/favorites-page/favorites-page';
+import FavouritesPage from '../pages/favourites-page/favourites-page';
 import LoginPage from '../pages/login-page/login-page';
 import MainPage from '../pages/main-page/main-page';
 import {Routes, Route} from 'react-router-dom';
@@ -12,6 +12,7 @@ import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
@@ -27,21 +28,23 @@ function App() {
     dispatch(checkAuthorisation());
   }, [dispatch]);
 
-
   return (
-    <Routes>
-      <Route path={AppRoutes.Main} element={<Layout />} >
-        <Route index path={`${AppRoutes.Main}`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
-        <Route index path={`${AppRoutes.Main}:city`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
-        <Route path={AppRoutes.Favourites} element={
-          <PrivateRoute><FavouritesPage /></PrivateRoute>
-        }
-        />
-        <Route path={AppRoutes.Offers} element={<OfferPage offers={offers} />} />
-      </Route>
-      <Route path={AppRoutes.Login} element={<LoginPage />} />
-      <Route path={AppRoutes.Error} element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path={AppRoutes.Main} element={<Layout />} >
+          <Route index path={`${AppRoutes.Main}`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
+          <Route index path={`${AppRoutes.Main}:city`} element={<MainPage activeCity={activeCity} offers={offers}/>} />
+          <Route path={AppRoutes.Favourites} element={
+            <PrivateRoute><FavouritesPage /></PrivateRoute>
+          }
+          />
+          <Route path={AppRoutes.Offers} element={<OfferPage offers={offers} />} />
+        </Route>
+        <Route path={AppRoutes.Login} element={<LoginPage />} />
+        <Route path={AppRoutes.Error} element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 

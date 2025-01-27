@@ -1,15 +1,27 @@
 import { Cities } from '@/libs/const';
 import type { AppDispatch } from '@/storage';
 import { offersActions } from '@/storage/slices/offers';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type MainCitiesLocationsProps = {
 	activeCity: Cities;
 };
 function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
 
+  const [searchParam, setSearchParam] = useSearchParams();
+
+
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(offersActions.setActiveCity(searchParam.get('city') || Cities.PARIS));
+  },[searchParam, dispatch]);
+
+  const handleCityClick = () => {
+    setSearchParam({city});
+  };
 
   return (
     <div className="tabs">
@@ -19,18 +31,13 @@ function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
             <li
               key={city}
               className="locations__item"
-              onClick={() => {
-                dispatch(offersActions.setActiveCity(city));
-              }}
             >
-              <Link
-                className={
-                  activeCity === city
-                    ? 'locations__item-link tabs__item tabs__item--active'
-                    : 'locations__item-link tabs__item'
-                }
-                //FIXME: обновление URL опаздывает на 1 город
-                to={''}
+              <Link onClick={() => handleCityClick} className={
+                activeCity === city
+                  ? 'locations__item-link tabs__item tabs__item--active'
+                  : 'locations__item-link tabs__item'
+              }
+              to={`?city=${city}`}
               >
                 <span>{city}</span>
               </Link>

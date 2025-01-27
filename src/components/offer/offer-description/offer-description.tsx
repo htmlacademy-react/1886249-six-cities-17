@@ -21,7 +21,7 @@ function OfferDescription({currentOffer}: OfferDescription) {
           <h1 className="offer__name">
             {currentOffer?.title}
           </h1>
-          <AddToBookmarks offerType={OfferType.OfferFull} bookmarkSizeType={BookmarkOfferFull}/>
+          <AddToBookmarks isFavourite={currentOffer.isFavorite} id={currentOffer.id} offerType={OfferType.OfferFull} bookmarkSizeType={BookmarkOfferFull}/>
         </div>
         <div className="offer__rating rating">
           <div className="offer__stars rating__stars">
