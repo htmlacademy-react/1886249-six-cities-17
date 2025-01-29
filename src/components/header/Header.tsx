@@ -1,5 +1,5 @@
 import './styles.css';
-import Logo from '../logo/Logo';
+import Logo from '../logo/logo';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { AuthorisedUserMenu } from './authorised-user-menu/authorised-user-menu';
 import { NotAuthorisedUserMenu } from './not-authorised-user-menu/not-authorised-user-menu';

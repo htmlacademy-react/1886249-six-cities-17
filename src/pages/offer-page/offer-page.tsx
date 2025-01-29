@@ -1,4 +1,3 @@
-import Offer from '@/components/offer/offer/Offer';
 import NearPlaces from '../../components/offer/near-places/near-places';
 import { useEffect, useState } from 'react';
 import { OfferCardPrew } from '@/libs/types/types';
@@ -7,6 +6,7 @@ import { offerFullSElectors } from '@/storage/slices/fullOffer';
 import { getNearPlaces, getOffer, getReviews } from '@/thunk/fullOffer';
 import { useLocation, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Offer from '@/components/offer/offer/offer';
 
 
 type OfferPageProps = {
@@ -22,7 +22,7 @@ function OfferPage({offers}: OfferPageProps) {
 
   const location = useLocation();
   useEffect(() => {
-    scrollTo(top);
+    window.scrollTo(0, 0);
   },[location.pathname]);
 
   useEffect(() => {
