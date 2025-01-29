@@ -3,7 +3,7 @@ import OfferDescription from '../offer-description/offer-description';
 import { MapType } from '../../../libs/const';
 import MapComponent from '@/components/map-component/map-component';
 import { OfferCardPrew, OfferFull } from '@/libs/types/types';
-import { CITIES_LOCATIONS } from '@/libs/mocks/cities-locations';
+import { CITIES_LOCATIONS } from '@/libs/cities-locations';
 
 type OfferProps = {
   nearOffers: OfferCardPrew[];

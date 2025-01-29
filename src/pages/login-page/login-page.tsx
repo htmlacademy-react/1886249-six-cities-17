@@ -1,4 +1,4 @@
-import Logo from '@/components/logo/Logo';
+import Logo from '@/components/logo/logo';
 import { useAppDispatch } from '@/hooks';
 import { AppRoutes } from '@/libs/const';
 import { login } from '@/thunk/authorisation';

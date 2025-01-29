@@ -1,10 +1,10 @@
 import { Cities } from '@/libs/const';
 
-type CitiesEmptyProps = {
+type MainCitiesEmptyProps = {
   activeCity: Cities;
 }
 
-function CitiesEmpty({activeCity}: CitiesEmptyProps) {
+function MainCitiesEmpty({activeCity}: MainCitiesEmptyProps) {
   return (
     <div className="cities__places-container cities__places-container--empty container">
       <section className="cities__no-places">
@@ -13,10 +13,9 @@ function CitiesEmpty({activeCity}: CitiesEmptyProps) {
           <p className="cities__status-description">We could not find any property available at the moment in {activeCity}</p>
         </div>
       </section>
-      {/* FIXME: NO PICTURE FOR RIGHT SECTION */}
       <div className="cities__right-section"></div>
     </div>
   );
 }
 
-export default CitiesEmpty;
+export default MainCitiesEmpty;

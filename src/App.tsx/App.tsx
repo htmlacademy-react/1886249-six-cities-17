@@ -6,13 +6,14 @@ import NotFoundPage from '../pages/not-found-page/not-found-page';
 import OfferPage from '../pages/offer-page/offer-page';
 import { AppRoutes } from '../libs/const';
 import PrivateRoute from '../components/private-route/private-route';
-import Layout from '../layout/Layout';
+
 import { offersSelectors } from '@/storage/slices/offers';
 import { fetchOffers } from '@/thunk/offers';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { checkAuthorisation } from '@/thunk/authorisation';
 import { ToastContainer } from 'react-toastify';
+import Layout from '@/layout/layout';
 
 function App() {
 

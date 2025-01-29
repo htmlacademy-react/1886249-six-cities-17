@@ -16,7 +16,9 @@ function MainCitiesLocations({ activeCity }: MainCitiesLocationsProps) {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(offersActions.setActiveCity(searchParam.get('city') || Cities.PARIS));
+    const cityParam = searchParam.get('city');
+    const city = Object.values(Cities).includes(cityParam as Cities) ? (cityParam as Cities) : Cities.PARIS;
+    dispatch(offersActions.setActiveCity(city));
   },[searchParam, dispatch]);
 
   const handleCityClick = () => {

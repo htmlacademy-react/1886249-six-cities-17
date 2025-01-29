@@ -1,6 +1,7 @@
-import { Points } from '../types/map/map';
+import { Point } from './types/types';
 
-export const POINTS: Points = [
+
+export const POINTS: Point[] = [
   {
     title: 'House in countryside',
     lat: 52.3909553943508,
