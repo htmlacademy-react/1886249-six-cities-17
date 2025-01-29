@@ -13,9 +13,7 @@ function OfferCard(_a) {
             React.createElement("span", null, "Premium"))) : null,
         React.createElement("div", { className: clsx_1.clsx(offerCardType + "__image-wrapper", 'place-card__image-wrapper') },
             React.createElement(react_router_dom_1.Link, { to: "/offers/" + id },
-                React.createElement("img", { className: "place-card__image", src: previewImage, 
-                    //TODO написать ф-цию для width / height c переданным cardType, кот возвращает объект с полями width и height и деструктурировать его
-                    width: offerCardType === const_1.CardType.FavoritesCard
+                React.createElement("img", { className: "place-card__image", src: previewImage, width: offerCardType === const_1.CardType.FavoritesCard
                         ? const_1.ImgSettings.FavouriteCardWidth
                         : const_1.ImgSettings.OfferCardWidth, height: const_1.CardType.FavoritesCard
                         ? const_1.ImgSettings.FavouriteCardHeight
