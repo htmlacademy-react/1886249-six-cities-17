@@ -20,8 +20,10 @@ const userSlice = createSlice({
     }},
   extraReducers: (builder) => {
     builder
-      .addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
-        state.userData = action.payload;
+      .addCase(login.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.userData = action.payload;
+        }
       })
       .addCase(logout.fulfilled, (state) => {
         state.userData = null;

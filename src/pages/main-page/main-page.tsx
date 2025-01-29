@@ -1,7 +1,7 @@
 import './main-page.css';
 import MainCitiesLocations from '@/components/main/main-cities-locations/main-cities-locations';
 import MainCitiesContainer from '@/components/main/main-cities-container/main-cities-container';
-import { CITIES_LOCATIONS, DEFAULT_CITY } from '@/libs/mocks/cities-locations';
+import { CITIES_LOCATIONS, DEFAULT_CITY } from '@/libs/cities-locations';
 import { RequestStatus, type Cities } from '@/libs/const';
 import type { OfferCardPrew } from '@/libs/types/types';
 import Spinner from '@/components/spinner/spinner';

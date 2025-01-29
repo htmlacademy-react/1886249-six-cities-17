@@ -106,4 +106,6 @@ export const RateValues: {[index: string]: string } = {
   '5': 'perfect',
 };
 
+export const LOGO_WIDTH = 81;
+export const LOGO_HEIGHT = 41;
 

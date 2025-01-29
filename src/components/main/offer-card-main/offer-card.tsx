@@ -7,7 +7,7 @@ import {
   OfferType,
 } from '../../../libs/const';
 import Rating from '../../offer/rating/rating';
-import AddToBookmarks from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
+import AddToBookmarksBtn from '../../add-to-bookmarks-btn/add-to-bookmarks-btn';
 import type { OfferCardPrew } from '@/libs/types/types';
 
 type OfferCardProps = {
@@ -67,7 +67,7 @@ export default function OfferCard({
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <AddToBookmarks
+          <AddToBookmarksBtn
             id={id}
             isFavourite = {isFavorite}
             bookmarkSizeType={BookmarkOfferCard}

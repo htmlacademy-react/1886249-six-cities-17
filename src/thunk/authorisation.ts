@@ -21,18 +21,22 @@ export const checkAuthorisation = createAppAsyncThunk(`${AUTH_SLICE_NAME}/checkA
   }
 });
 
-export const login = createAppAsyncThunk(`${AUTH_SLICE_NAME}/login`, async (loginData, thunkApi) => {
-  try {
-    const {data} = await api.post<User>(APIRouts.Authorisation, loginData, { headers: {
-      'Content-Type': 'application/json',}});
-    saveToken(data.token);
-    return data;
-  } catch (error) {
-    if (error instanceof Error) {
-      return thunkApi.rejectWithValue(error.message);
+export const login = createAppAsyncThunk<User, { email: string; password: string }>(
+  `${AUTH_SLICE_NAME}/login`,
+  async (loginData, thunkApi) => {
+    try {
+      const { data } = await api.post<User>(APIRouts.Authorisation, loginData, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      saveToken(data.token);
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkApi.rejectWithValue(error.message);
+      } return thunkApi.rejectWithValue('Unknown error');
     }
   }
-});
+);
 
 export const logout = createAppAsyncThunk(`${AUTH_SLICE_NAME}/logout`, async (_, thunkApi) => {
   try {

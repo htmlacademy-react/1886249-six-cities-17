@@ -1,4 +1,4 @@
-import { OfferCity } from '../types/types';
+import { OfferCity } from './types/types';
 
 export const DEFAULT_CITY: OfferCity = { name: 'Paris',
   location: {

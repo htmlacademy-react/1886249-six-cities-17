@@ -16,7 +16,7 @@ type AddToBookmarksProps = {
 	id: string;
 };
 
-function AddToBookmarks({
+function AddToBookmarksBtn({
   bookmarkSizeType,
   offerType,
   isFavourite,
@@ -74,4 +74,4 @@ function AddToBookmarks({
   );
 }
 
-export default AddToBookmarks;
+export default AddToBookmarksBtn;

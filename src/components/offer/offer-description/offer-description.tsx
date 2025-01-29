@@ -1,4 +1,4 @@
-import AddToBookmarks from '@/components/add-to-bookmarks-btn/add-to-bookmarks-btn';
+import AddToBookmarksBtn from '@/components/add-to-bookmarks-btn/add-to-bookmarks-btn';
 import { OfferFull } from '../../../libs/types/types';
 import HostInfo from '../host-info/host-info';
 import OfferReviews from '../reviews/offer-reviews/offer-reviews';
@@ -21,7 +21,7 @@ function OfferDescription({currentOffer}: OfferDescription) {
           <h1 className="offer__name">
             {currentOffer?.title}
           </h1>
-          <AddToBookmarks isFavourite={currentOffer.isFavorite} id={currentOffer.id} offerType={OfferType.OfferFull} bookmarkSizeType={BookmarkOfferFull}/>
+          <AddToBookmarksBtn isFavourite={currentOffer.isFavorite} id={currentOffer.id} offerType={OfferType.OfferFull} bookmarkSizeType={BookmarkOfferFull}/>
         </div>
         <div className="offer__rating rating">
           <div className="offer__stars rating__stars">

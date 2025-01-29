@@ -64,3 +64,9 @@ export type LoginData = {
   password: string;
 }
 
+export type Point = {
+  title: string;
+  lat: number;
+  lng: number;
+}
+
